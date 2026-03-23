@@ -1,0 +1,59 @@
+{
+  "fixedResult": "stay_01",
+  "questions": [
+    {
+      "id": "tripStyle",
+      "question": "今回の滞在で重視したいのは？",
+      "options": [
+        {
+          "label": "移動しやすい都心アクセス",
+          "value": "access"
+        },
+        {
+          "label": "静かで閉じた空間",
+          "value": "quiet"
+        },
+        {
+          "label": "写真映えと雰囲気",
+          "value": "visual"
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "question": "チェックイン後の過ごし方は？",
+      "options": [
+        {
+          "label": "部屋で落ち着いて過ごしたい",
+          "value": "room"
+        },
+        {
+          "label": "周辺を散策したい",
+          "value": "walk"
+        },
+        {
+          "label": "できるだけ人目を避けたい",
+          "value": "avoid"
+        }
+      ]
+    },
+    {
+      "id": "priority",
+      "question": "宿にあると嬉しい要素は？",
+      "options": [
+        {
+          "label": "長期滞在向けの設備",
+          "value": "long"
+        },
+        {
+          "label": "シンプルで迷わない導線",
+          "value": "simple"
+        },
+        {
+          "label": "深夜でも静かな環境",
+          "value": "night"
+        }
+      ]
+    }
+  ]
+}

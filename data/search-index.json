@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "title": "東雲レジデンス浅草",
+      "area": "東京 / 東部エリア",
+      "summary": "診断結果で案内される人気宿。静かな都心ステイに。",
+      "url": "./detail.html?id=stay_01&mode=favorite",
+      "thumb": "./assets/images/img_thumb_stay01_600x400.png",
+      "keywords": [
+        "浅草",
+        "静か",
+        "人気",
+        "診断"
+      ]
+    },
+    {
+      "title": "神楽坂ステイラウンジ",
+      "area": "東京 / 中央エリア",
+      "summary": "街歩き派に人気のコンパクト宿。",
+      "url": "./detail.html?id=stay_02&mode=favorite",
+      "thumb": "./assets/images/img_thumb_stay02_600x400.png",
+      "keywords": [
+        "神楽坂",
+        "中央"
+      ]
+    },
+    {
+      "title": "月島アーバンハウス",
+      "area": "東京 / 湾岸エリア",
+      "summary": "湾岸夜景と下町散策に向いた宿。",
+      "url": "./detail.html?id=stay_03&mode=favorite",
+      "thumb": "./assets/images/img_thumb_stay03_600x400.png",
+      "keywords": [
+        "月島",
+        "夜景",
+        "湾岸"
+      ]
+    }
+  ]
+}

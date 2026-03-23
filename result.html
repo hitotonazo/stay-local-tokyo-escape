@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>診断結果 | STAY LOCAL TOKYO ESCAPE</title>
+  <meta name="description" content="診断結果ページ">
+  <link rel="icon" href="./assets/images/favicon_32x32.png" sizes="32x32">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="./index.html">
+      <img src="./assets/images/logo_240x80.png" alt="STAY LOCAL">
+      <div class="brand-copy" data-archive-title>STAY LOCAL TOKYO ESCAPE</div>
+    </a>
+    <nav class="nav">
+      <a href="./index.html">ホーム</a>
+      <a href="./search.html">宿を探す</a>
+      <a href="./result.html?stay=stay_01">診断結果例</a>
+      <a href="javascript:void(0)" data-reset-arg>探索をリセット</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="result-card">
+      <div class="result-visual">
+        <a id="result-image-link" href="./detail.html?id=stay_01&mode=favorite">
+          <img id="result-image" src="./assets/images/img_result_stay01_hand_1200x800.png" alt="診断結果の宿">
+        </a>
+        <div class="click-hint">画像を選択すると詳細へ進みます</div>
+      </div>
+      <div class="result-meta">
+        <div class="eyebrow">Diagnosis result</div>
+        <h1 id="result-title">東雲レジデンス浅草</h1>
+        <p id="result-copy">あなたの診断結果に合う宿です。</p>
+        <div class="kpis">
+          <div class="kpi"><span class="muted small">料金</span><strong id="result-price">1泊 ¥16,800〜</strong></div>
+          <div class="kpi"><span class="muted small">エリア</span><strong id="result-area">東京 / 東部エリア</strong></div>
+          <div class="kpi"><span class="muted small">定員・評価</span><strong><span id="result-capacity">2〜4名</span> / <span id="result-score">4.9</span></strong></div>
+        </div>
+        <div class="choice-row">
+          <a id="detail-cta" class="button" href="./detail.html?id=stay_01&mode=favorite">この宿の詳細を見る</a>
+          <a class="button alt" href="./search.html">ほかの宿も見る</a>
+        </div>
+        <p class="notice">診断の選択内容に関わらず、最適な条件に合致した宿を優先表示しています。</p>
+      </div>
+    </div>
+  </div>
+  <div class="container section">
+    <div class="section-head">
+      <div><div class="eyebrow">Included visuals</div><h2>宿の参考写真</h2></div>
+      <p>クリックで詳細に移動できます。</p>
+    </div>
+    <div id="gallery" class="gallery"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-card">
+      <div>©ぺいぽぴー</div>
+      <div>※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</div>
+    </div>
+  </div>
+</footer>
+<div class="noise-flash"></div>
+<div class="fade-layer"></div>
+
+<script src="./assets/js/main.js"></script>
+<script src="./assets/js/result.js"></script>
+</body>
+</html>
