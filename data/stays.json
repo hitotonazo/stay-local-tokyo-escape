@@ -1,125 +1,28 @@
-[
-  {
-    "id": "stay_01",
-    "name": "東雲レジデンス浅草",
-    "area": "東京 / 東部エリア",
-    "capacity": "2〜4名",
-    "score": "4.9 / 5",
-    "priceText": "1泊 ¥16,800〜",
-    "thumb": "./assets/images/img_thumb_stay01_600x400.png",
-    "mainImage": "./assets/images/img_stay01_1200x800.png",
-    "resultImage": "./assets/images/img_result_stay01_1200x800.png",
-    "summary": "都心のアクセスを確保しつつ、静かな滞在ができるデザイナーズ民泊。長期滞在にも向いた人気の一室です。",
-    "trapSummary": "対象の移動負荷を抑えつつ、外部から視認されにくい個室型ユニット。記録・待機・収容に適した導線を備えています。",
-    "resultCopy": "あなたの診断結果は『東雲レジデンス浅草』でした。どの選択肢を選んでも、もっとも適した滞在先としてこの宿が案内されます。",
-    "gallery": [
-      "./assets/images/img_room_01_1200x800.png",
-      "./assets/images/img_meal_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
-    ],
-    "cautions": [
-      {
-        "text": "チェックインは16:00以降、チェックアウトは10:00までです。"
-      },
-      {
-        "text": "館内は全室禁煙です。"
-      },
-      {
-        "text": "騒音防止のため、22:00以降は共用部での会話をお控えください。"
-      },
-      {
-        "text": "外部との通信が制限される場合があります。",
-        "isAlert": true
-      },
-      {
-        "text": "退出には所定の手続きが必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は記録されることがあります。",
-        "isAlert": true
-      }
-    ],
-    "cautionsTrap": [
-      {
-        "text": "搬入は16:00以降、搬出は10:00までです。"
-      },
-      {
-        "text": "対象は指定室からの移動を控えてください。"
-      },
-      {
-        "text": "確認のない接触行為は禁止です。"
-      },
-      {
-        "text": "外部との通信は制限されます。",
-        "isAlert": true
-      },
-      {
-        "text": "退出には管理側の承認が必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は常時記録されます。",
-        "isAlert": true
-      }
-    ]
-  },
-  {
-    "id": "stay_02",
-    "name": "神楽坂ステイラウンジ",
-    "area": "東京 / 中央エリア",
-    "capacity": "1〜2名",
-    "score": "4.6 / 5",
-    "priceText": "1泊 ¥14,200〜",
-    "thumb": "./assets/images/img_thumb_stay02_600x400.png",
-    "mainImage": "./assets/images/img_stay02_1200x800.png",
-    "resultImage": "./assets/images/img_stay02_1200x800.png",
-    "summary": "食と散策の相性がよい、コンパクトで落ち着いた街なか宿。",
-    "trapSummary": "補助候補地点。",
-    "resultCopy": "人気の高い中央エリアの宿です。",
-    "gallery": [
-      "./assets/images/img_stay02_1200x800.png",
-      "./assets/images/img_room_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
-    ],
-    "cautions": [
-      {
-        "text": "通常の宿泊約款に準じます。"
-      }
-    ],
-    "cautionsTrap": [
-      {
-        "text": "通常の宿泊約款に準じます。"
-      }
-    ]
-  },
-  {
-    "id": "stay_03",
-    "name": "月島アーバンハウス",
-    "area": "東京 / 湾岸エリア",
-    "capacity": "2〜3名",
-    "score": "4.7 / 5",
-    "priceText": "1泊 ¥15,500〜",
-    "thumb": "./assets/images/img_thumb_stay03_600x400.png",
-    "mainImage": "./assets/images/img_stay03_1200x800.png",
-    "resultImage": "./assets/images/img_stay03_1200x800.png",
-    "summary": "夜景と下町感を両方楽しめる、バランスの良い都市型民泊。",
-    "trapSummary": "補助候補地点。",
-    "resultCopy": "湾岸散策にも向いた人気宿です。",
-    "gallery": [
-      "./assets/images/img_stay03_1200x800.png",
-      "./assets/images/img_meal_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
-    ],
-    "cautions": [
-      {
-        "text": "通常の宿泊約款に準じます。"
-      }
-    ],
-    "cautionsTrap": [
-      {
-        "text": "通常の宿泊約款に準じます。"
-      }
-    ]
-  }
-]
+{
+  "stays": [
+    {
+      "id": "stay_01",
+      "name": "夜影レジデンス"
+    },
+    {
+      "id": "stay_02",
+      "name": "中央シティハウス"
+    },
+    {
+      "id": "stay_03",
+      "name": "青空ステイ"
+    },
+    {
+      "id": "stay_04",
+      "name": "モダンリブ東京"
+    },
+    {
+      "id": "stay_05",
+      "name": "グリーンテラス"
+    },
+    {
+      "id": "stay_06",
+      "name": "サンライトハウス"
+    }
+  ]
+}

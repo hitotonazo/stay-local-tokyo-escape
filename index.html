@@ -1,109 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>STAY LOCAL TOKYO ESCAPE | 都会向け民泊宿サイト</title>
-  <meta name="description" content="都会向け民泊宿を紹介する、診断付きの民泊案内サイト。">
-  <link rel="icon" href="./assets/images/favicon_32x32.png" sizes="32x32">
-  <link rel="stylesheet" href="./assets/css/style.css">
+<meta charset="UTF-8">
+<title>都会の民泊検索</title>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="./index.html">
-      <img src="./assets/images/logo_240x80.png" alt="STAY LOCAL">
-      <div class="brand-copy" data-archive-title>STAY LOCAL TOKYO ESCAPE</div>
-    </a>
-    <nav class="nav">
-      <a href="./index.html">ホーム</a>
-      <a href="./search.html">宿を探す</a>
-      <a href="./result.html?stay=stay_01">診断結果例</a>
-      <a href="javascript:void(0)" data-reset-arg>探索をリセット</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-card">
-        <img src="./assets/images/hero_main_1440x900.png" alt="都会向け民泊宿">
-        <div class="hero-overlay">
-          <div class="eyebrow">Urban stay curation</div>
-          <h1 class="hero-title">都会に逃げ込むように、<br>静かな一室を見つける。</h1>
-          <p class="hero-copy">東京で短く泊まる人にも、少し長く身を寄せる人にも。診断と条件検索から、雰囲気に合う民泊宿を案内します。</p>
-        </div>
-      </div>
-      <aside class="hero-side panel">
-        <div class="eyebrow">About this site</div>
-        <h2>3分でわかる宿診断</h2>
-        <p>滞在スタイルを選ぶと、あなたに合う宿が1件表示されます。都市型・静音・アクセス重視の宿を中心に掲載しています。</p>
-        <div class="tag-list">
-          <span class="tag">都心アクセス</span><span class="tag">長期滞在対応</span><span class="tag">少人数向け</span><span class="tag">静かな環境</span>
-        </div>
-        <div class="search-bar" style="margin-top:18px">
-          <input type="text" value="東部エリア / 浅草近辺" aria-label="おすすめ条件" readonly>
-          <a class="button alt" href="./search.html">条件検索</a>
-        </div>
-        <p class="notice">診断結果は掲載状況や時期により同一の宿をご案内することがあります。</p>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container section-head">
-      <div><div class="eyebrow">Featured stays</div><h2>今週のおすすめ宿</h2></div>
-      <p>都内の移動がしやすく、短期滞在でも使いやすい施設を掲載しています。</p>
-    </div>
-    <div class="container grid-3" id="featured-stays"></div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <form id="diagnosis-form"></form>
-      <div class="panel">
-        <div class="choice-row">
-          <button id="start-diagnosis" class="button">診断をはじめる</button>
-          <a class="button alt" href="./search.html">先に一覧を見る</a>
-        </div>
-        <p id="diagnosis-teaser" class="notice hidden" style="margin-top:12px;">結果を読み込み中です…</p>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-card">
-      <div>©ぺいぽぴー</div>
-      <div>※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</div>
-    </div>
-  </div>
-</footer>
-<div class="noise-flash"></div>
-<div class="fade-layer"></div>
-
-<script src="./assets/js/main.js"></script>
-<script src="./assets/js/diagnosis.js"></script>
-<script>
-fetch('./data/stays.json').then(r=>r.json()).then(stays=>{
-  const el = document.getElementById('featured-stays');
-  el.innerHTML = stays.map(stay => `
-    <article class="card">
-      <img src="${stay.thumb}" alt="">
-      <div class="card-body">
-        <div class="eyebrow">${stay.area}</div>
-        <h3>${stay.name}</h3>
-        <p class="muted small">${stay.summary}</p>
-        <div class="meta"><span>${stay.capacity}</span><span>${stay.score}</span></div>
-        <div class="price">${stay.priceText}</div>
-        <a class="inline-link" href="./detail.html?id=${stay.id}&mode=favorite">詳細を見る</a>
-      </div>
-    </article>
-  `).join('');
-});
-</script>
+<h1>民泊診断</h1>
+<button onclick="start()">診断する</button>
+<footer>©ぺいぽぴー ※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</footer>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
