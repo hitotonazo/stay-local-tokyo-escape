@@ -34,6 +34,42 @@
     });
   };
 
+
+
+  const noiseOverlay = document.getElementById('noise-overlay');
+  let noiseNextAction = null;
+
+  window.runSiteAlteredOverlay = function(nextAction = null){
+    if(!noiseOverlay) {
+      if (typeof nextAction === 'function') nextAction();
+      return;
+    }
+    noiseNextAction = nextAction;
+    noiseOverlay.classList.add('is-active');
+    noiseOverlay.setAttribute('aria-hidden', 'false');
+  };
+
+  window.closeSiteAlteredOverlay = function(){
+    if(!noiseOverlay) return;
+    noiseOverlay.classList.remove('is-active');
+    noiseOverlay.setAttribute('aria-hidden', 'true');
+  };
+
+  function handleNoiseOverlayClick(){
+    window.closeSiteAlteredOverlay();
+    if(typeof noiseNextAction === 'function'){
+      const action = noiseNextAction;
+      noiseNextAction = null;
+      action();
+      return;
+    }
+    noiseNextAction = null;
+  }
+
+  if(noiseOverlay){
+    noiseOverlay.addEventListener('click', handleNoiseOverlayClick);
+  }
+
   document.querySelectorAll('[data-archive-title]').forEach(el => {
     if(window.ARGState.completed()) el.textContent = 'STAY LOCAL TOKYO ESCAPE / ARCHIVE';
   });

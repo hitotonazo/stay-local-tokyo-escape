@@ -53,10 +53,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     modeGuide.innerHTML = 'レビュー欄の文言をヒントに、URL の <code>mode=favorite</code> を別の値に変えてみてください。';
   }
 
-  document.getElementById('trap-toggle').addEventListener('click', async () => {
+  document.getElementById('trap-toggle').addEventListener('click', () => {
     params.set('mode', isTrap ? 'favorite' : 'trap');
     params.set('id', id);
-    await flashTransition(isTrap ? 120 : 180);
-    location.search = params.toString();
+
+    if (!isTrap) {
+      runSiteAlteredOverlay(async () => {
+        await flashTransition(180);
+        location.search = params.toString();
+      });
+      return;
+    }
+
+    flashTransition(120).then(() => {
+      location.search = params.toString();
+    });
   });
 });

@@ -17,11 +17,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('gallery').innerHTML = stay.gallery.map(src => `<img src="${src}" alt="">`).join('');
   document.querySelector('.result-visual').classList.add('is-clickable');
 
-  const jump = async (e) => {
+  const jump = (e) => {
     e.preventDefault();
     window.ARGState.set({ sawHand: true });
-    await flashTransition(240);
-    location.href = `./detail.html?id=${stay.id}&mode=favorite`;
+    runSiteAlteredOverlay(async () => {
+      await flashTransition(240);
+      location.href = `./detail.html?id=${stay.id}&mode=favorite`;
+    });
   };
 
   document.getElementById('result-image-link').addEventListener('click', jump);
