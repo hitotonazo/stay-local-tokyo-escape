@@ -35,6 +35,42 @@
         "夜景",
         "湾岸"
       ]
+    },
+    {
+      "title": "浜町リバーサイドルーム",
+      "area": "東京 / 東部エリア",
+      "summary": "川沿いの落ち着いた空気が魅力の静かな都心宿。",
+      "url": "./detail.html?id=stay_04&mode=favorite",
+      "thumb": "./assets/images/img_thumb_stay04_600x400.png",
+      "keywords": [
+        "浜町",
+        "川沿い",
+        "静か"
+      ]
+    },
+    {
+      "title": "上野コンパクトステイ",
+      "area": "東京 / 北東エリア",
+      "summary": "移動しやすく短期滞在にも向いた宿。",
+      "url": "./detail.html?id=stay_05&mode=favorite",
+      "thumb": "./assets/images/img_thumb_stay05_600x400.png",
+      "keywords": [
+        "上野",
+        "駅近",
+        "短期"
+      ]
+    },
+    {
+      "title": "芝公園アネックス",
+      "area": "東京 / 南部エリア",
+      "summary": "公園近くで落ち着いて過ごせる上質な宿。",
+      "url": "./detail.html?id=stay_06&mode=favorite",
+      "thumb": "./assets/images/img_thumb_stay06_600x400.png",
+      "keywords": [
+        "芝公園",
+        "静か",
+        "上質"
+      ]
     }
   ]
 }

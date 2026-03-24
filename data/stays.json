@@ -121,5 +121,92 @@
         "text": "通常の宿泊約款に準じます。"
       }
     ]
+  },
+  {
+    "id": "stay_04",
+    "name": "浜町リバーサイドルーム",
+    "area": "東京 / 東部エリア",
+    "capacity": "1〜3名",
+    "score": "4.5 / 5",
+    "priceText": "1泊 ¥13,900〜",
+    "thumb": "./assets/images/img_thumb_stay04_600x400.png",
+    "mainImage": "./assets/images/img_stay04_1200x800.png",
+    "resultImage": "./assets/images/img_stay04_1200x800.png",
+    "summary": "川沿いの落ち着いた空気が魅力の、静かな都心型ステイ。",
+    "trapSummary": "補助候補地点。",
+    "resultCopy": "水辺に近い穏やかな宿泊先です。",
+    "gallery": [
+      "./assets/images/img_stay04_1200x800.png",
+      "./assets/images/img_room_01_1200x800.png",
+      "./assets/images/img_access_01_1200x800.png"
+    ],
+    "cautions": [
+      {
+        "text": "通常の宿泊約款に準じます。"
+      }
+    ],
+    "cautionsTrap": [
+      {
+        "text": "通常の宿泊約款に準じます。"
+      }
+    ]
+  },
+  {
+    "id": "stay_05",
+    "name": "上野コンパクトステイ",
+    "area": "東京 / 北東エリア",
+    "capacity": "1〜2名",
+    "score": "4.4 / 5",
+    "priceText": "1泊 ¥12,800〜",
+    "thumb": "./assets/images/img_thumb_stay05_600x400.png",
+    "mainImage": "./assets/images/img_stay05_1200x800.png",
+    "resultImage": "./assets/images/img_stay05_1200x800.png",
+    "summary": "駅からの移動がしやすく、短期滞在にも向いた宿です。",
+    "trapSummary": "補助候補地点。",
+    "resultCopy": "アクセス重視の方に向いた人気宿です。",
+    "gallery": [
+      "./assets/images/img_stay05_1200x800.png",
+      "./assets/images/img_meal_01_1200x800.png",
+      "./assets/images/img_access_01_1200x800.png"
+    ],
+    "cautions": [
+      {
+        "text": "通常の宿泊約款に準じます。"
+      }
+    ],
+    "cautionsTrap": [
+      {
+        "text": "通常の宿泊約款に準じます。"
+      }
+    ]
+  },
+  {
+    "id": "stay_06",
+    "name": "芝公園アネックス",
+    "area": "東京 / 南部エリア",
+    "capacity": "2〜4名",
+    "score": "4.8 / 5",
+    "priceText": "1泊 ¥17,200〜",
+    "thumb": "./assets/images/img_thumb_stay06_600x400.png",
+    "mainImage": "./assets/images/img_stay06_1200x800.png",
+    "resultImage": "./assets/images/img_stay06_1200x800.png",
+    "summary": "公園に近く、夜も比較的静かに過ごせる上質な一室。",
+    "trapSummary": "補助候補地点。",
+    "resultCopy": "落ち着いた南部エリアの宿泊先です。",
+    "gallery": [
+      "./assets/images/img_stay06_1200x800.png",
+      "./assets/images/img_room_01_1200x800.png",
+      "./assets/images/img_meal_01_1200x800.png"
+    ],
+    "cautions": [
+      {
+        "text": "通常の宿泊約款に準じます。"
+      }
+    ],
+    "cautionsTrap": [
+      {
+        "text": "通常の宿泊約款に準じます。"
+      }
+    ]
   }
 ]
