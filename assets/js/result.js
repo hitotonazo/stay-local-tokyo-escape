@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(location.search);
   const id = params.get('stay') || 'stay_01';
-  const stays = await fetch('./data/stays.json').then(r => r.json());
+  const stays = await fetch(dataUrl('data/stays.json')).then(r => r.json());
   const stay = stays.find(s => s.id === id) || stays[0];
   const isTarget = stay.id === 'stay_01';
 
   document.getElementById('result-title').textContent = stay.name;
   document.getElementById('result-copy').textContent = stay.resultCopy;
   document.getElementById('result-image').src = isTarget
-    ? './assets/images/img_result_stay01_hand_1200x800.png'
-    : stay.resultImage;
+    ? assetUrl('assets/images/img_result_stay01_hand_1200x800.png')
+    : assetUrl(stay.resultImage);
   document.getElementById('result-price').textContent = stay.priceText;
   document.getElementById('result-area').textContent = stay.area;
   document.getElementById('result-capacity').textContent = stay.capacity;
   document.getElementById('result-score').textContent = stay.score;
-  document.getElementById('gallery').innerHTML = stay.gallery.map(src => `<img src="${src}" alt="">`).join('');
+  document.getElementById('gallery').innerHTML = stay.gallery.map(src => `<img src="${assetUrl(src)}" alt="">`).join('');
   document.querySelector('.result-visual').classList.add('is-clickable');
 
   const jump = (e) => {

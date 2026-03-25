@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const id = params.get('id') || 'stay_01';
   const mode = params.get('mode') || 'favorite';
 
-  const stays = await fetch('./data/stays.json').then(r => r.json());
-  const reviews = await fetch('./data/reviews.json').then(r => r.json());
+  const stays = await fetch(dataUrl('data/stays.json')).then(r => r.json());
+  const reviews = await fetch(dataUrl('data/reviews.json')).then(r => r.json());
   const stay = stays.find(s => s.id === id) || stays[0];
   const isTrap = mode === 'trap';
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     <span>定員: ${stay.capacity}</span>
     <span>${completed ? '対象地点' : '宿泊施設'} ID: ${stay.id}</span>
   `;
-  document.getElementById('detail-gallery').innerHTML = stay.gallery.map(src => `<img src="${src}" alt="">`).join('');
+  document.getElementById('detail-gallery').innerHTML = stay.gallery.map(src => `<img src="${assetUrl(src)}" alt="">`).join('');
 
   const cautionItems = isTrap ? stay.cautionsTrap : stay.cautions;
   document.getElementById('caution-box').innerHTML = `

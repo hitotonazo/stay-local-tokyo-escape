@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>STAY LOCAL TOKYO ESCAPE | 都会向け民泊宿サイト</title>
   <meta name="description" content="都会向け民泊宿を紹介する、診断付きの民泊案内サイト。">
-  <link rel="icon" href="./assets/images/favicon_32x32.png" sizes="32x32">
+  <link rel="icon" href="./assets/images/favicon_32x32.png" data-r2-href="assets/images/favicon_32x32.png" sizes="32x32">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 <header class="site-header">
   <div class="container">
     <a class="brand" href="./index.html">
-      <img src="./assets/images/logo_240x80.png" alt="STAY LOCAL">
+      <img src="./assets/images/logo_240x80.png" data-r2-src="assets/images/logo_240x80.png" alt="STAY LOCAL">
       <div class="brand-copy" data-archive-title>STAY LOCAL TOKYO ESCAPE</div>
     </a>
     <nav class="nav">
@@ -29,7 +29,7 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-card">
-        <img src="./assets/images/hero_main_1440x900.png" alt="都会向け民泊宿">
+        <img src="./assets/images/hero_main_1440x900.png" data-r2-src="assets/images/hero_main_1440x900.png" alt="都会向け民泊宿">
         <div class="hero-overlay">
           <div class="eyebrow">Urban stay curation</div>
           <h1 class="hero-title">都会に逃げ込むように、<br>静かな一室を見つける。</h1>
@@ -94,14 +94,15 @@
 <div class="noise-flash"></div>
 <div class="fade-layer"></div>
 
+<script src="./assets/js/config.js"></script>
 <script src="./assets/js/main.js"></script>
 <script src="./assets/js/diagnosis.js"></script>
 <script>
-fetch('./data/stays.json').then(r=>r.json()).then(stays=>{
+fetch(dataUrl('data/stays.json')).then(r=>r.json()).then(stays=>{
   const el = document.getElementById('featured-stays');
   el.innerHTML = stays.map(stay => `
     <article class="card">
-      <img src="${stay.thumb}" alt="">
+      <img src="${assetUrl(stay.thumb)}" alt="">
       <div class="card-body">
         <div class="eyebrow">${stay.area}</div>
         <h3>${stay.name}</h3>

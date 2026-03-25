@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const input = document.getElementById('search-input');
   const button = document.getElementById('search-button');
   const list = document.getElementById('search-results');
-  const idx = await fetch('./data/search-index.json').then(r => r.json());
+  const idx = await fetch(dataUrl('data/search-index.json')).then(r => r.json());
 
   const render = (items) => {
     list.innerHTML = items.map(item => `
       <article class="card">
-        <img src="${item.thumb}" alt="">
+        <img src="${assetUrl(item.thumb)}" alt="">
         <div class="card-body">
           <div class="eyebrow">${item.area}</div>
           <h3>${item.title}</h3>
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       area:'Search',
       summary:'診断結果ページやおすすめ宿一覧からご確認ください。',
       url:'./index.html',
-      thumb:'./assets/images/img_thumb_stay01_600x400.png'
+      thumb:'assets/images/img_thumb_stay01_600x400.png'
     }]);
   };
 

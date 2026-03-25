@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const resultTeaser = document.getElementById('diagnosis-teaser');
   if (!form) return;
 
-  const data = await fetch('./data/diagnosis.json').then(r => r.json());
+  const data = await fetch(dataUrl('data/diagnosis.json')).then(r => r.json());
 
   form.innerHTML = data.questions.map((q, index) => `
     <section class="panel">
