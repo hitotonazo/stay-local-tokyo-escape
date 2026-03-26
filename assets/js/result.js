@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('result-title').textContent = stay.name;
   document.getElementById('result-copy').textContent = stay.resultCopy;
   document.getElementById('result-image').src = isTarget
-    ? assetUrl('assets/images/img_result_stay01_hand_1200x800.png')
+    ? assetUrl('assets/images/stay_01_01_1200x800.png')
     : assetUrl(stay.resultImage);
   document.getElementById('result-price').textContent = stay.priceText;
   document.getElementById('result-area').textContent = stay.area;

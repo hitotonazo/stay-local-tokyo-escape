@@ -274,3 +274,41 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
     line-height: 1.5;
   }
 }
+
+
+/* diagnosis result hand overlay using the same stay_01_01 image */
+.result-image-wrap {
+  position: relative;
+  display: block;
+}
+
+.result-image-wrap > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.result-image-wrap::after {
+  content: "";
+  position: absolute;
+  right: 2.5%;
+  bottom: 4%;
+  width: 24%;
+  aspect-ratio: 1 / 1.15;
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(0.8px);
+  transition: opacity 0.18s ease;
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(38, 28, 22, 0.94) 0 18%, rgba(38, 28, 22, 0.70) 19%, rgba(38, 28, 22, 0) 46%),
+    radial-gradient(ellipse at 34% 56%, rgba(34, 24, 20, 0.92) 0 11%, rgba(34, 24, 20, 0) 36%),
+    radial-gradient(ellipse at 67% 51%, rgba(34, 24, 20, 0.92) 0 10%, rgba(34, 24, 20, 0) 34%),
+    linear-gradient(155deg, rgba(42, 30, 24, 0.96), rgba(16, 12, 10, 0.90));
+  clip-path: polygon(10% 78%, 15% 60%, 21% 40%, 28% 24%, 37% 12%, 45% 11%, 51% 26%, 56% 11%, 64% 7%, 70% 17%, 71% 34%, 76% 10%, 84% 8%, 89% 19%, 88% 39%, 93% 15%, 99% 17%, 99% 33%, 95% 51%, 91% 72%, 85% 91%, 63% 98%, 46% 94%, 29% 89%);
+  box-shadow: -16px 12px 28px rgba(0,0,0,0.42);
+  mix-blend-mode: multiply;
+}
+
+.result-image-wrap.result-image-wrap--hand::after {
+  opacity: 0.92;
+}

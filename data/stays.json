@@ -7,15 +7,15 @@
     "score": "4.9 / 5",
     "priceText": "1泊 ¥16,800〜",
     "thumb": "./assets/images/img_thumb_stay01_600x400.png",
-    "mainImage": "./assets/images/img_stay01_1200x800.png",
-    "resultImage": "./assets/images/img_result_stay01_1200x800.png",
+    "mainImage": "./assets/images/stay_01_01_1200x800.png",
+    "resultImage": "./assets/images/stay_01_01_1200x800.png",
     "summary": "都心のアクセスを確保しつつ、静かな滞在ができるデザイナーズ民泊。長期滞在にも向いた人気の一室です。",
     "trapSummary": "対象の移動負荷を抑えつつ、外部から視認されにくい個室型ユニット。記録・待機・収容に適した導線を備えています。",
     "resultCopy": "あなたの診断結果は『東雲レジデンス浅草』でした。どの選択肢を選んでも、もっとも適した滞在先としてこの宿が案内されます。",
     "gallery": [
-      "./assets/images/img_room_01_1200x800.png",
-      "./assets/images/img_meal_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
+      "./assets/images/stay_01_01_1200x800.png",
+      "./assets/images/stay_01_02_1200x800.png",
+      "./assets/images/stay_01_03_1200x800.png"
     ],
     "cautions": [
       {
@@ -72,15 +72,15 @@
     "score": "4.6 / 5",
     "priceText": "1泊 ¥14,200〜",
     "thumb": "./assets/images/img_thumb_stay02_600x400.png",
-    "mainImage": "./assets/images/img_stay02_1200x800.png",
-    "resultImage": "./assets/images/img_stay02_1200x800.png",
+    "mainImage": "./assets/images/stay_02_01_1200x800.png",
+    "resultImage": "./assets/images/stay_02_01_1200x800.png",
     "summary": "食と散策の相性がよい、コンパクトで落ち着いた街なか宿。",
     "trapSummary": "補助候補地点。",
     "resultCopy": "人気の高い中央エリアの宿です。",
     "gallery": [
-      "./assets/images/img_stay02_1200x800.png",
-      "./assets/images/img_room_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
+      "./assets/images/stay_02_01_1200x800.png",
+      "./assets/images/stay_02_02_1200x800.png",
+      "./assets/images/stay_02_03_1200x800.png"
     ],
     "cautions": [
       {
@@ -101,15 +101,15 @@
     "score": "4.7 / 5",
     "priceText": "1泊 ¥15,500〜",
     "thumb": "./assets/images/img_thumb_stay03_600x400.png",
-    "mainImage": "./assets/images/img_stay03_1200x800.png",
-    "resultImage": "./assets/images/img_stay03_1200x800.png",
+    "mainImage": "./assets/images/stay_03_01_1200x800.png",
+    "resultImage": "./assets/images/stay_03_01_1200x800.png",
     "summary": "夜景と下町感を両方楽しめる、バランスの良い都市型民泊。",
     "trapSummary": "補助候補地点。",
     "resultCopy": "湾岸散策にも向いた人気宿です。",
     "gallery": [
-      "./assets/images/img_stay03_1200x800.png",
-      "./assets/images/img_meal_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
+      "./assets/images/stay_03_01_1200x800.png",
+      "./assets/images/stay_03_02_1200x800.png",
+      "./assets/images/stay_03_03_1200x800.png"
     ],
     "cautions": [
       {
@@ -130,15 +130,15 @@
     "score": "4.5 / 5",
     "priceText": "1泊 ¥13,900〜",
     "thumb": "./assets/images/img_thumb_stay04_600x400.png",
-    "mainImage": "./assets/images/img_stay04_1200x800.png",
-    "resultImage": "./assets/images/img_stay04_1200x800.png",
+    "mainImage": "./assets/images/stay_04_01_1200x800.png",
+    "resultImage": "./assets/images/stay_04_01_1200x800.png",
     "summary": "川沿いの落ち着いた空気が魅力の、静かな都心型ステイ。",
     "trapSummary": "補助候補地点。",
     "resultCopy": "水辺に近い穏やかな宿泊先です。",
     "gallery": [
-      "./assets/images/img_stay04_1200x800.png",
-      "./assets/images/img_room_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
+      "./assets/images/stay_04_01_1200x800.png",
+      "./assets/images/stay_04_02_1200x800.png",
+      "./assets/images/stay_04_03_1200x800.png"
     ],
     "cautions": [
       {
@@ -159,15 +159,15 @@
     "score": "4.4 / 5",
     "priceText": "1泊 ¥12,800〜",
     "thumb": "./assets/images/img_thumb_stay05_600x400.png",
-    "mainImage": "./assets/images/img_stay05_1200x800.png",
-    "resultImage": "./assets/images/img_stay05_1200x800.png",
+    "mainImage": "./assets/images/stay_05_01_1200x800.png",
+    "resultImage": "./assets/images/stay_05_01_1200x800.png",
     "summary": "駅からの移動がしやすく、短期滞在にも向いた宿です。",
     "trapSummary": "補助候補地点。",
     "resultCopy": "アクセス重視の方に向いた人気宿です。",
     "gallery": [
-      "./assets/images/img_stay05_1200x800.png",
-      "./assets/images/img_meal_01_1200x800.png",
-      "./assets/images/img_access_01_1200x800.png"
+      "./assets/images/stay_05_01_1200x800.png",
+      "./assets/images/stay_05_02_1200x800.png",
+      "./assets/images/stay_05_03_1200x800.png"
     ],
     "cautions": [
       {
@@ -188,15 +188,15 @@
     "score": "4.8 / 5",
     "priceText": "1泊 ¥17,200〜",
     "thumb": "./assets/images/img_thumb_stay06_600x400.png",
-    "mainImage": "./assets/images/img_stay06_1200x800.png",
-    "resultImage": "./assets/images/img_stay06_1200x800.png",
+    "mainImage": "./assets/images/stay_06_01_1200x800.png",
+    "resultImage": "./assets/images/stay_06_01_1200x800.png",
     "summary": "公園に近く、夜も比較的静かに過ごせる上質な一室。",
     "trapSummary": "補助候補地点。",
     "resultCopy": "落ち着いた南部エリアの宿泊先です。",
     "gallery": [
-      "./assets/images/img_stay06_1200x800.png",
-      "./assets/images/img_room_01_1200x800.png",
-      "./assets/images/img_meal_01_1200x800.png"
+      "./assets/images/stay_06_01_1200x800.png",
+      "./assets/images/stay_06_02_1200x800.png",
+      "./assets/images/stay_06_03_1200x800.png"
     ],
     "cautions": [
       {

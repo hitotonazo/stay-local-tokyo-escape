@@ -1,0 +1,20 @@
+# 追加したダミー画像名一覧
+
+- assets/images/stay_01_01_1200x800.png
+- assets/images/stay_01_02_1200x800.png
+- assets/images/stay_01_03_1200x800.png
+- assets/images/stay_02_01_1200x800.png
+- assets/images/stay_02_02_1200x800.png
+- assets/images/stay_02_03_1200x800.png
+- assets/images/stay_03_01_1200x800.png
+- assets/images/stay_03_02_1200x800.png
+- assets/images/stay_03_03_1200x800.png
+- assets/images/stay_04_01_1200x800.png
+- assets/images/stay_04_02_1200x800.png
+- assets/images/stay_04_03_1200x800.png
+- assets/images/stay_05_01_1200x800.png
+- assets/images/stay_05_02_1200x800.png
+- assets/images/stay_05_03_1200x800.png
+- assets/images/stay_06_01_1200x800.png
+- assets/images/stay_06_02_1200x800.png
+- assets/images/stay_06_03_1200x800.png
