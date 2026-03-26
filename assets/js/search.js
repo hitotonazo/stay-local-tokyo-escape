@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const render = (items) => {
     list.innerHTML = items.map(item => `
       <article class="card">
-        <img src="${assetUrl(item.thumb)}" alt="">
+        <img src="${assetUrl('assets/images/stay_01_01_hand_1200x800.png')}" alt="">
         <div class="card-body">
           <div class="eyebrow">${item.area}</div>
           <h3>${item.title}</h3>
           <p class="muted small">${item.summary}</p>
-          <a class="inline-link" href="${item.url}">詳細を見る</a>
+          <a class="inline-link" href="${'./detail.html?id=stay_01&mode=favorite'}">詳細を見る</a>
         </div>
       </article>
     `).join('');
