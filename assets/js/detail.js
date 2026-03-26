@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  const __detailParams = new URLSearchParams(location.search);
+  const __detailMode = __detailParams.get('mode') || 'favorite';
+  if (window.AnomalyState) {
+    if (__detailMode === 'favorite') {
+      window.AnomalyState.set('anomaly-2');
+    } else if (__detailMode === 'trap') {
+      window.AnomalyState.set('anomaly-3');
+    } else {
+      window.AnomalyState.clear();
+    }
+  }
   const params = new URLSearchParams(location.search);
   const id = params.get('id') || 'stay_01';
   const mode = params.get('mode') || 'favorite';
@@ -58,13 +69,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     params.set('id', id);
 
     if (!isTrap) {
-      runSiteAlteredOverlay(async () => {
+      showIndependentAnomaly('anomaly-3', async () => {
         await flashTransition(180);
         location.search = params.toString();
       });
       return;
     }
 
+    if (window.AnomalyState) window.AnomalyState.set('anomaly-2');
     flashTransition(120).then(() => {
       location.search = params.toString();
     });

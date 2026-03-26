@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const stay = stays.find(s => s.id === id) || stays[0];
   const isTarget = stay.id === 'stay_01';
 
+  if (isTarget && window.AnomalyState) {
+    window.AnomalyState.set('anomaly-1');
+  } else if (window.AnomalyState) {
+    window.AnomalyState.clear();
+  }
+
   document.getElementById('result-title').textContent = stay.name;
   document.getElementById('result-copy').textContent = stay.resultCopy;
 
@@ -20,7 +26,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const jump = (e) => {
     e.preventDefault();
-    window.ARGState.set({ sawHand: true });
+    if (isTarget) {
+      window.ARGState.set({ sawHand: true });
+      showIndependentAnomaly('anomaly-1', async () => {
+        await flashTransition(220);
+        location.href = './index.html';
+      });
+      return;
+    }
+
     runSiteAlteredOverlay(async () => {
       await flashTransition(240);
       location.href = `./detail.html?id=${stay.id}&mode=favorite`;

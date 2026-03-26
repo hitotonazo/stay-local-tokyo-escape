@@ -1,3 +1,30 @@
+
+window.AnomalyState = {
+  current: null,
+  set(key) {
+    this.current = key || null;
+    document.documentElement.setAttribute('data-active-anomaly', this.current || '');
+  },
+  is(key) {
+    return this.current === key;
+  },
+  clear() {
+    this.current = null;
+    document.documentElement.setAttribute('data-active-anomaly', '');
+  }
+};
+
+window.showIndependentAnomaly = function(key, nextAction = null) {
+  if (window.AnomalyState) window.AnomalyState.set(key);
+  if (typeof window.runSiteAlteredOverlay === 'function') {
+    window.runSiteAlteredOverlay(() => {
+      if (typeof nextAction === 'function') nextAction();
+    });
+    return;
+  }
+  if (typeof nextAction === 'function') nextAction();
+};
+
 (function(){
   const yearEls = document.querySelectorAll('[data-year]');
   yearEls.forEach(el => el.textContent = new Date().getFullYear());

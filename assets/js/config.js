@@ -1,9 +1,9 @@
 (function(){
   const config = {
     // 例:
-    // R2_PUBLIC_BASE: 'https://assets.example.com/site_minpaku_arg'
+    // R2_PUBLIC_BASE: 'https://pub-854bb8be8e064d0b9629674abfee8b9f.r2.dev/site_minpaku_arg'
     // r2.dev を使う場合:
-    // R2_PUBLIC_BASE: 'https://pub-xxxxxxxx.r2.dev/site_minpaku_arg'
+    // R2_PUBLIC_BASE: 'https://pub-854bb8be8e064d0b9629674abfee8b9f.r2.dev/site_minpaku_arg'
     R2_PUBLIC_BASE: 'https://pub-854bb8be8e064d0b9629674abfee8b9f.r2.dev/site_minpaku_arg',
     // true にすると JSON も R2 から読み込みます。
     // false の場合、JSON は Pages 側、画像だけ R2 から読み込みます。

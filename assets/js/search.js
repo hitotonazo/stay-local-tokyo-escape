@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  if (window.AnomalyState) window.AnomalyState.set('anomaly-2');
   const params = new URLSearchParams(location.search);
   const q = (params.get('q') || '').trim();
   await fetch(dataUrl('data/search-index.json')).then(r => r.json());
