@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   document.getElementById('result-title').textContent = stay.name;
   document.getElementById('result-copy').textContent = stay.resultCopy;
-  document.getElementById('result-image').src = isTarget
-    assetUrl(stay.resultImage);
+
+  const resultImageEl = document.getElementById('result-image');
+  resultImageEl.src = assetUrl(isTarget ? 'assets/images/stay_01_01_hand_1200x800.png' : stay.resultImage);
+
   document.getElementById('result-price').textContent = stay.priceText;
   document.getElementById('result-area').textContent = stay.area;
   document.getElementById('result-capacity').textContent = stay.capacity;
