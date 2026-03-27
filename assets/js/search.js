@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  if (window.AnomalyState) window.AnomalyState.set('anomaly-2');
   const params = new URLSearchParams(location.search);
   const q = (params.get('q') || '').trim();
-  await fetch(dataUrl('data/search-index.json')).then(r => r.json());
+  document.body.setAttribute('data-current-anomaly', 'anomaly-2');
 
+  const resultsEl = document.getElementById('search-results');
   const target = {
     title: '東雲レジデンス浅草',
     area: '東京 / 東部エリア',
@@ -12,36 +12,41 @@ document.addEventListener('DOMContentLoaded', async () => {
     thumb: 'assets/images/stay_01_01_hand_1200x800.png'
   };
 
-  const resultCount = document.getElementById('result-count');
-  const resultList = document.getElementById('search-result-list');
-
-  if (resultCount) {
-    resultCount.textContent = q ? '検索結果 1件' : 'おすすめ 1件';
-  }
-
-  resultList.innerHTML = `
-    <article class="search-card is-clickable">
+  resultsEl.innerHTML = `
+    <article class="card is-clickable">
       <a class="search-card-link" href="${target.url}">
-        <div class="search-card-thumb">
-          <img src="${assetUrl(target.thumb)}" alt="${target.title}">
-        </div>
-        <div class="search-card-body">
-          <p class="search-card-area">${target.area}</p>
-          <h3 class="search-card-title">${target.title}</h3>
-          <p class="search-card-summary">${target.summary}</p>
+        <img src="${assetUrl(target.thumb)}" alt="${target.title}">
+        <div class="card-body">
+          <div class="eyebrow">Search result</div>
+          <h3>${target.title}</h3>
+          <p class="muted">${target.area}</p>
+          <p>${target.summary}</p>
         </div>
       </a>
     </article>
   `;
 
-  const link = resultList.querySelector('.search-card-link');
-  if (link) {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      runSiteAlteredOverlay(async () => {
-        await flashTransition(220);
-        location.href = target.url;
-      });
+  const input = document.getElementById('search-input');
+  const button = document.getElementById('search-button');
+  if (q && input) input.value = q;
+
+  function goTarget() {
+    showSiteAlteredThen(async () => {
+      await flashTransition(180);
+      location.href = target.url;
+    });
+  }
+
+  resultsEl.querySelector('.search-card-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.ARGState.set({ sawRed: true });
+    goTarget();
+  });
+
+  if (button) {
+    button.addEventListener('click', () => {
+      window.ARGState.set({ sawRed: true });
+      goTarget();
     });
   }
 });

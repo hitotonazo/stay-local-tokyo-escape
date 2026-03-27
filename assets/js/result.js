@@ -5,42 +5,41 @@ document.addEventListener('DOMContentLoaded', async () => {
   const stay = stays.find(s => s.id === id) || stays[0];
   const isTarget = stay.id === 'stay_01';
 
-  if (isTarget && window.AnomalyState) {
-    window.AnomalyState.set('anomaly-1');
-  } else if (window.AnomalyState) {
-    window.AnomalyState.clear();
-  }
+  document.body.setAttribute('data-current-anomaly', isTarget ? 'anomaly-1' : '');
 
   document.getElementById('result-title').textContent = stay.name;
   document.getElementById('result-copy').textContent = stay.resultCopy;
-
-  const resultImageEl = document.getElementById('result-image');
-  resultImageEl.src = assetUrl(isTarget ? 'assets/images/stay_01_01_hand_1200x800.png' : stay.resultImage);
-
   document.getElementById('result-price').textContent = stay.priceText;
   document.getElementById('result-area').textContent = stay.area;
   document.getElementById('result-capacity').textContent = stay.capacity;
   document.getElementById('result-score').textContent = stay.score;
   document.getElementById('gallery').innerHTML = stay.gallery.map(src => `<img src="${assetUrl(src)}" alt="">`).join('');
-  document.querySelector('.result-visual').classList.add('is-clickable');
 
-  const jump = (e) => {
+  const resultImageEl = document.getElementById('result-image');
+  resultImageEl.src = assetUrl(isTarget ? 'assets/images/stay_01_01_hand_1200x800.png' : stay.resultImage);
+
+  const imageLink = document.getElementById('result-image-link');
+  const detailCta = document.getElementById('detail-cta');
+
+  imageLink.addEventListener('click', (e) => {
     e.preventDefault();
     if (isTarget) {
       window.ARGState.set({ sawHand: true });
-      showIndependentAnomaly('anomaly-1', async () => {
-        await flashTransition(220);
+      showSiteAlteredThen(async () => {
+        await flashTransition(180);
         location.href = './index.html';
       });
       return;
     }
-
-    runSiteAlteredOverlay(async () => {
-      await flashTransition(240);
+    showSiteAlteredThen(async () => {
+      await flashTransition(180);
       location.href = `./detail.html?id=${stay.id}&mode=favorite`;
     });
-  };
+  });
 
-  document.getElementById('result-image-link').addEventListener('click', jump);
-  document.getElementById('detail-cta').addEventListener('click', jump);
+  detailCta.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await flashTransition(120);
+    location.href = `./detail.html?id=${stay.id}&mode=favorite`;
+  });
 });

@@ -1,15 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const __detailParams = new URLSearchParams(location.search);
-  const __detailMode = __detailParams.get('mode') || 'favorite';
-  if (window.AnomalyState) {
-    if (__detailMode === 'favorite') {
-      window.AnomalyState.set('anomaly-2');
-    } else if (__detailMode === 'trap') {
-      window.AnomalyState.set('anomaly-3');
-    } else {
-      window.AnomalyState.clear();
-    }
-  }
   const params = new URLSearchParams(location.search);
   const id = params.get('id') || 'stay_01';
   const mode = params.get('mode') || 'favorite';
@@ -19,6 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const stay = stays.find(s => s.id === id) || stays[0];
   const isTrap = mode === 'trap';
 
+  document.body.setAttribute('data-current-anomaly', isTrap ? 'anomaly-3' : 'anomaly-2');
   window.ARGState.set(Object.assign({ sawRed: true }, isTrap ? { sawTrap: true } : {}));
   const completed = window.ARGState.completed();
 
@@ -55,13 +45,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const archiveLink = document.getElementById('archive-link');
   const modeGuide = document.getElementById('mode-guide');
-  if (completed) {
+  archiveLink.classList.add('hidden');
+
+  if (isTrap && completed) {
     archiveLink.classList.remove('hidden');
     modeGuide.innerHTML = '探索が完了しました。<strong>詳細ログを見る</strong> が表示されています。';
   } else if (isTrap) {
-    modeGuide.innerHTML = 'URL の <code>mode=trap</code> を確認中です。ほかの違和感も見ていると、表示が変わる場合があります。';
+    modeGuide.innerHTML = '表示モードが変更されています。注意事項とレビュー内容を確認してください。';
   } else {
-    modeGuide.innerHTML = 'レビュー欄の文言をヒントに、URL の <code>mode=favorite</code> を別の値に変えてみてください。';
+    modeGuide.innerHTML = 'URL の mode パラメータを変更すると、別の表示になる場合があります。';
   }
 
   document.getElementById('trap-toggle').addEventListener('click', () => {
@@ -69,14 +61,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     params.set('id', id);
 
     if (!isTrap) {
-      showIndependentAnomaly('anomaly-3', async () => {
+      runSiteAlteredOverlay(async () => {
         await flashTransition(180);
         location.search = params.toString();
       });
       return;
     }
 
-    if (window.AnomalyState) window.AnomalyState.set('anomaly-2');
     flashTransition(120).then(() => {
       location.search = params.toString();
     });
