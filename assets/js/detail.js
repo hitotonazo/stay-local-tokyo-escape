@@ -68,8 +68,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
+    awaitFavoriteOnly();
+  });
+
+  function awaitFavoriteOnly(){
     flashTransition(120).then(() => {
       location.search = params.toString();
     });
-  });
+  }
 });
