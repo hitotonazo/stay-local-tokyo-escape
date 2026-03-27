@@ -89,3 +89,20 @@
     });
   });
 })();
+
+
+(function(){
+  function getStage(){
+    try { return JSON.parse(sessionStorage.getItem('minpakuArgStage') || '{}'); }
+    catch(e){ return {}; }
+  }
+  const stage = getStage();
+  const heroTitle = document.getElementById('hero-title-main');
+  const heroCopy = document.getElementById('hero-copy-main');
+  if (heroTitle && stage.anomaly2Done) {
+    heroTitle.innerHTML = '都会に消え込むように、<br>静かな一室へ運び込む。';
+  }
+  if (heroCopy && stage.anomaly2Done) {
+    heroCopy.textContent = '見つかりにくい宿、気づかれにくい導線、声の漏れにくい部屋。条件に合う場所を、目的別に案内します。';
+  }
+})();

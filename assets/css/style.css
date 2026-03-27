@@ -329,3 +329,29 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 }
 .blood-warning:hover{filter:brightness(.98)}
 .blood-warning:focus{outline:2px solid #8e1111;outline-offset:3px}
+
+
+/* trap mode negative display */
+.page-negative {
+  filter: invert(1) hue-rotate(180deg);
+  background: #fff !important;
+}
+
+.page-negative img,
+.page-negative video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.madness-link {
+  color: #b00000;
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: .06em;
+  display: inline-block;
+  line-height: 1.8;
+  text-shadow: 0 0 6px rgba(120,0,0,.35);
+}
+
+.madness-link:hover {
+  opacity: .86;
+}

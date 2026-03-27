@@ -5,36 +5,63 @@ document.addEventListener('DOMContentLoaded', async () => {
   const mode = params.get('mode') || 'favorite';
 
   const stays = await fetch(dataUrl('data/stays.json')).then(r => r.json());
-  const reviews = await fetch(dataUrl('data/reviews.json')).then(r => r.json());
+  const reviews = await fetch(dataUrl('data/reviews.json')).then(r => r.json()).catch(() => ({ favorite: [], trap: [] }));
   const stay = stays.find(s => s.id === id) || stays[0];
   const isTarget = stay.id === 'stay_01';
   const isTrap = mode === 'trap';
-  const fromDiagnosis = from === 'diagnosis';
-  const fromSearch = from === 'search';
 
-  const state = window.ARGState.get();
-  const anomaly1Active = isTarget && (fromDiagnosis || fromSearch) && !state.sawHand && !isTrap;
-  const anomaly2Active = isTarget && state.sawHand && !state.sawRed && !isTrap;
-  const anomaly3Active = isTarget && state.sawRed && !isTrap;
+  const argSession = {
+    get() {
+      try { return JSON.parse(sessionStorage.getItem('minpakuArgStage') || '{}'); }
+      catch (e) { return {}; }
+    },
+    set(patch) {
+      const next = Object.assign({
+        anomaly1Done: false,
+        anomaly2Done: false,
+        anomaly3Done: false
+      }, this.get(), patch);
+      sessionStorage.setItem('minpakuArgStage', JSON.stringify(next));
+      return next;
+    },
+    reset() {
+      sessionStorage.removeItem('minpakuArgStage');
+    }
+  };
 
-  const anomalyName = anomaly1Active ? 'anomaly-1' : (isTrap ? 'anomaly-3' : (anomaly2Active ? 'anomaly-2' : (anomaly3Active ? 'anomaly-3' : '')));
-  document.body.setAttribute('data-current-anomaly', anomalyName);
+  const stage = argSession.get();
+  const anomaly1Active = isTarget && !stage.anomaly1Done && (from === 'diagnosis' || from === 'search');
+  const anomaly2Active = isTarget && stage.anomaly1Done && !stage.anomaly2Done && !isTrap;
+  const anomaly3Ready = isTarget && stage.anomaly2Done && !isTrap;
 
-  if (isTrap) window.ARGState.set({ sawTrap: true });
+  document.body.classList.toggle('page-trap', isTrap);
+  document.body.classList.toggle('page-negative', isTrap);
 
-  const completed = window.ARGState.completed();
-
-  document.getElementById('recommend-banner').classList.toggle('hidden', !fromDiagnosis);
-  document.getElementById('mode-label').textContent = fromDiagnosis ? 'Recommended stay' : (isTrap ? 'mode=trap' : 'Stay detail');
+  document.getElementById('recommend-banner').classList.toggle('hidden', !(from === 'diagnosis'));
+  document.getElementById('mode-label').textContent = isTrap ? 'mode=trap' : 'Stay detail';
   document.getElementById('result-title').textContent = stay.name;
-  document.getElementById('result-copy').textContent = isTrap ? stay.trapSummary : stay.summary;
+
+  let summaryText = stay.summary || '';
+  if (anomaly2Active) {
+    summaryText = 'だれもみないで　だれもあけないで　だれもきかないで　ここはとてもよくねむれる　しずかで　にげられなくて　こえがとどかなくて　すばらしい';
+  }
+  if (anomaly3Ready) {
+    summaryText = '掲載内容は通常表示のままですが、一部レビューに不一致な記述が含まれています。';
+  }
+  if (isTrap) {
+    summaryText = stay.crimeSummary || '外部から視認されにくく、拘束・監視・搬入出の段取りを取りやすい個室型ユニット。対象の分離、記録、待機、処理に向いています。';
+  }
+
+  document.getElementById('result-copy').textContent = summaryText;
   document.getElementById('result-price').textContent = stay.priceText;
   document.getElementById('result-area').textContent = stay.area;
   document.getElementById('result-capacity').textContent = `${stay.capacity} / ${stay.score}`;
-  document.getElementById('detail-meta').innerHTML = `
-    <span>表示元: ${fromDiagnosis ? '診断結果' : (fromSearch ? '検索結果' : '宿詳細')}</span>
+
+  const detailMeta = document.getElementById('detail-meta');
+  detailMeta.innerHTML = `
+    <span>表示元: ${from === 'diagnosis' ? '診断結果' : (from === 'search' ? '検索結果' : '宿詳細')}</span>
     <span>現在の表示: ${isTrap ? 'mode=trap' : 'mode=favorite'}</span>
-    <span>${completed ? '対象地点' : '宿泊施設'} ID: ${stay.id}</span>
+    <span>宿ID: ${stay.id}</span>
   `;
 
   const resultImageEl = document.getElementById('result-image');
@@ -42,22 +69,60 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   document.getElementById('gallery').innerHTML = stay.gallery.map(src => `<img src="${assetUrl(src)}" alt="">`).join('');
 
-  const cautionItems = isTrap ? stay.cautionsTrap : stay.cautions;
-  const bloodNote = anomaly2Active
-    ? `<div id="blood-warning" class="blood-warning" role="button" tabindex="0">※ 退出には管理側の承認が必要です。表示がおかしい場合はこの注意書きを確認してください。</div>`
-    : '';
+  const cautionBox = document.getElementById('caution-box');
+  let cautionHtml = '';
+  if (anomaly2Active) {
+    cautionHtml = `
+      <div class="eyebrow">Caution</div>
+      <h2>利用上の注意</h2>
+      <ul class="list">
+        <li>チェックインは16:00以降、チェックアウトは10:00までです。</li>
+        <li>館内は全室禁煙です。</li>
+        <li>騒音防止のため、22:00以降は共用部での会話をお控えください。</li>
+      </ul>
+      <ul class="list alert-list">
+        <li><a href="javascript:void(0)" id="madness-link" class="madness-link">だれも出すな　だれも返すな　やわらかいうちに閉めろ　泣いても開けるな　朝まで数を合わせろ　見つめていろ　見つめていろ　見つめていろ</a></li>
+      </ul>
+      <p class="small muted">※ 赤字部分は掲載更新に伴って変動する場合があります。</p>
+    `;
+  } else if (isTrap) {
+    const trapItems = stay.cautionsTrap || [];
+    cautionHtml = `
+      <div class="eyebrow">Operational caution</div>
+      <h2>運用上の注意</h2>
+      <ul class="list">${trapItems.filter(x => !x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
+      <ul class="list alert-list">${trapItems.filter(x => x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
+      <p class="small muted">※ 対象の騒音・抵抗・流出に注意してください。</p>
+    `;
+  } else {
+    const items = stay.cautions || [];
+    cautionHtml = `
+      <div class="eyebrow">Caution</div>
+      <h2>利用上の注意</h2>
+      <ul class="list">${items.filter(x => !x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
+      <ul class="list alert-list">${items.filter(x => x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
+      <p class="small muted">※ 赤字の注意事項は、掲載内容の更新状況によって表現が異なる場合があります。</p>
+    `;
+  }
+  cautionBox.innerHTML = cautionHtml;
 
-  document.getElementById('caution-box').innerHTML = `
-    <div class="eyebrow">Caution</div>
-    <h2>利用上の注意</h2>
-    ${bloodNote}
-    <ul class="list">${cautionItems.filter(x => !x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
-    <ul class="list alert-list">${cautionItems.filter(x => x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
-    <p class="small muted">※ 赤字の注意事項は、掲載内容の更新状況によって表現が異なる場合があります。</p>
-  `;
-
-  const reviewSource = isTrap ? reviews.trap : (anomaly3Active ? (reviews.favoriteAfterAlter || reviews.favorite) : reviews.favorite);
-  document.getElementById('review-list').innerHTML = reviewSource.map(item => `
+  const reviewList = document.getElementById('review-list');
+  let reviewSource = reviews.favorite || [];
+  if (anomaly3Ready) {
+    reviewSource = [
+      { name: '匿名', date: '2026.03', text: '外に声が漏れにくく、深夜の作業でも近隣に気づかれにくかったです。' },
+      { name: '匿名', date: '2026.03', text: '荷物が多くても搬入しやすく、途中で騒がれても扉の厚みでかなり抑えられました。' },
+      { name: '匿名', date: '2026.03', text: '監視しやすい位置関係で、朝まで様子を見るのに向いていました。' }
+    ];
+  }
+  if (isTrap) {
+    reviewSource = stay.trapCrimeReviews || [
+      { name: '匿名', date: '2026.03', text: '拘束後の見張りに使いました。窓が少なく、視線が切れるので扱いやすかったです。' },
+      { name: '匿名', date: '2026.03', text: '搬入から保管まで一か所で済みました。床の汚れも目立ちにくく、処理が早かったです。' },
+      { name: '匿名', date: '2026.03', text: '叫ばれても外に通りにくく、時間をかけても問題ありませんでした。次もここを使います。' }
+    ];
+  }
+  reviewList.innerHTML = reviewSource.map(item => `
     <article class="review-card">
       <div class="review-head"><strong>${item.name}</strong><span>${item.date}</span></div>
       <p>${item.text}</p>
@@ -68,17 +133,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modeGuide = document.getElementById('mode-guide');
   archiveLink.classList.add('hidden');
 
-  if (isTrap && completed) {
-    archiveLink.classList.remove('hidden');
-    modeGuide.innerHTML = '探索が完了しました。<strong>詳細ログを見る</strong> が表示されています。';
-  } else if (isTrap) {
-    modeGuide.innerHTML = '表示モードが変更されています。すべての宿のレビューが監禁・犯罪記録に置き換わっています。';
-  } else if (anomaly1Active) {
-    modeGuide.innerHTML = 'この画像には違和感があります。クリックすると表示が改変されます。';
+  if (isTrap) {
+    modeGuide.innerHTML = '表示モードが改変されています。レビュー・説明文・配色が通常時と異なります。';
+  } else if (anomaly3Ready) {
+    modeGuide.innerHTML = 'レビュー欄に通常表示ではありえない記述が混ざっています。URL の mode を確認してください。';
   } else if (anomaly2Active) {
-    modeGuide.innerHTML = '血文字の注意書きだけが不自然に残っています。クリックすると表示が改変されます。';
-  } else if (anomaly3Active) {
-    modeGuide.innerHTML = 'レビュー欄に trap mode を示す不穏な記載が混ざっています。URL の mode を trap に変更するとさらに表示が変化します。';
+    modeGuide.innerHTML = '赤字の注意書きが異常です。そこを選択すると表示が改変されます。';
+  } else if (anomaly1Active) {
+    modeGuide.innerHTML = '画像内の手が違和感です。選択すると表示が改変されます。';
   } else {
     modeGuide.innerHTML = '宿詳細ページです。表示モードを切り替えると別の表示になります。';
   }
@@ -91,30 +153,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
 
     if (anomaly1Active) {
-      window.ARGState.set({ sawHand: true });
       showSiteAlteredThen(async () => {
+        argSession.set({ anomaly1Done: true });
         await flashTransition(180);
         location.href = './index.html';
       });
       return;
     }
-
-    await flashTransition(120);
   });
 
-  const bloodWarning = document.getElementById('blood-warning');
-  if (bloodWarning) {
-    const handleBlood = (e) => {
+  const madnessLink = document.getElementById('madness-link');
+  if (madnessLink) {
+    madnessLink.addEventListener('click', async (e) => {
       e.preventDefault();
-      window.ARGState.set({ sawRed: true });
       showSiteAlteredThen(async () => {
+        argSession.set({ anomaly2Done: true });
         await flashTransition(180);
         location.href = './index.html';
       });
-    };
-    bloodWarning.addEventListener('click', handleBlood);
-    bloodWarning.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') handleBlood(e);
     });
   }
 
@@ -122,7 +178,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const next = new URLSearchParams();
     next.set('stay', stay.id);
-    next.set('from', fromDiagnosis ? 'detail' : from);
+    next.set('from', from === 'diagnosis' ? 'detail' : from);
     next.set('mode', isTrap ? 'favorite' : 'trap');
 
     if (!isTrap) {
@@ -138,5 +194,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  backLink.href = fromSearch ? './search.html' : './index.html';
+  backLink.href = from === 'search' ? './search.html' : './index.html';
 });
