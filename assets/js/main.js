@@ -4,15 +4,15 @@
 
   window.ARGState = {
     get(){
-      try{return JSON.parse(localStorage.getItem('minpakuArgState') || '{}');}
+      try{return JSON.parse(sessionStorage.getItem('minpakuArgState') || '{}');}
       catch(e){return {};}
     },
     set(patch){
       const next = Object.assign({sawHand:false,sawRed:false,sawTrap:false}, this.get(), patch);
-      localStorage.setItem('minpakuArgState', JSON.stringify(next));
+      sessionStorage.setItem('minpakuArgState', JSON.stringify(next));
       return next;
     },
-    reset(){ localStorage.removeItem('minpakuArgState'); },
+    reset(){ sessionStorage.removeItem('minpakuArgState'); },
     completed(){
       const s = this.get();
       return !!(s.sawHand && s.sawRed && s.sawTrap);
