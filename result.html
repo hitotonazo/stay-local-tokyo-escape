@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>診断結果 | STAY LOCAL TOKYO ESCAPE</title>
-  <meta name="description" content="診断結果ページ">
+  <title>宿詳細 | STAY LOCAL TOKYO ESCAPE</title>
+  <meta name="description" content="宿詳細ページ">
   <link rel="icon" href="./assets/images/favicon_32x32.png" data-r2-href="assets/images/favicon_32x32.png" sizes="32x32">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
 <header class="site-header">
   <div class="container">
     <a class="brand" href="./index.html">
@@ -19,69 +18,60 @@
     <nav class="nav">
       <a href="./index.html">ホーム</a>
       <a href="./search.html">宿を探す</a>
-      <a href="./result.html?stay=stay_01">診断結果例</a>
+      <a href="./result.html?stay=stay_01&from=diagnosis&mode=favorite">診断結果例</a>
       <a href="javascript:void(0)" data-reset-arg>探索をリセット</a>
     </nav>
   </div>
 </header>
-
 <main class="section">
   <div class="container">
-    <div class="result-card">
+    <div id="recommend-banner" class="panel hidden" style="margin-bottom:18px">
+      <div class="eyebrow">Recommended stay</div>
+      <h2 style="margin:0">あなたにおすすめの宿はこちら</h2>
+    </div>
+    <div class="result-card unified-result-card">
       <div class="result-visual">
-        <a id="result-image-link" href="./detail.html?id=stay_01&mode=favorite">
-          <div class="result-image-wrap"><img id="result-image" src="./assets/images/stay_01_01_hand_1200x800.png" data-r2-src="assets/images/stay_01_01_hand_1200x800.png" alt="診断結果の宿"></div>
+        <a id="result-image-link" href="./result.html?stay=stay_01&from=detail&mode=favorite">
+          <div class="result-image-wrap">
+            <img id="result-image" src="./assets/images/stay_01_01_1200x800.png" data-r2-src="assets/images/stay_01_01_1200x800.png" alt="宿画像">
+          </div>
         </a>
-        <div class="click-hint">画像を選択すると詳細へ進みます</div>
+        <div class="click-hint" id="image-click-hint">画像を選択すると次の表示へ進みます</div>
       </div>
       <div class="result-meta">
-        <div class="eyebrow">Diagnosis result</div>
-        <h1 id="result-title">東雲レジデンス浅草</h1>
-        <p id="result-copy">あなたの診断結果に合う宿です。</p>
+        <div class="eyebrow" id="mode-label">Stay detail</div>
+        <h1 id="result-title">宿名</h1>
+        <p id="result-copy" class="muted">説明文</p>
         <div class="kpis">
           <div class="kpi"><span class="muted small">料金</span><strong id="result-price">1泊 ¥16,800〜</strong></div>
           <div class="kpi"><span class="muted small">エリア</span><strong id="result-area">東京 / 東部エリア</strong></div>
-          <div class="kpi"><span class="muted small">定員・評価</span><strong><span id="result-capacity">2〜4名</span> / <span id="result-score">4.9</span></strong></div>
+          <div class="kpi"><span class="muted small">定員・評価</span><strong id="result-capacity">2〜4名 / 4.9 / 5</strong></div>
         </div>
-        <div class="choice-row">
-          <a id="detail-cta" class="button" href="./detail.html?id=stay_01&mode=favorite">この宿の詳細を見る</a>
-          <a class="button alt" href="./search.html">ほかの宿も見る</a>
-        </div>
-        <p class="notice">診断の選択内容に関わらず、最適な条件に合致した宿を優先表示しています。</p>
+        <div class="meta" id="detail-meta" style="margin-top:16px"></div>
       </div>
     </div>
-  </div>
-  <div class="container section">
-    <div class="section-head">
-      <div><div class="eyebrow">Included visuals</div><h2>宿の参考写真</h2></div>
-      <p>クリックで詳細に移動できます。</p>
+    <div class="panel" style="margin-top:24px">
+      <div class="section-head" style="margin-bottom:8px"><div><div class="eyebrow">Gallery</div><h2>宿の写真</h2></div></div>
+      <div class="gallery" id="gallery"></div>
     </div>
-    <div id="gallery" class="gallery"></div>
+    <div class="panel" id="caution-box" style="margin-top:20px"></div>
+    <div class="panel" style="margin-top:20px">
+      <div class="section-head" style="margin-bottom:8px"><div><div class="eyebrow">Review</div><h2>レビュー</h2></div></div>
+      <div class="review-list" id="review-list"></div>
+    </div>
+    <div class="choice-row" style="margin-top:20px">
+      <a class="button hidden" id="archive-link" href="./archive/target_stay_01.html">詳細ログを見る</a>
+      <a class="button alt" id="trap-toggle" href="javascript:void(0)">表示モードを切り替える</a>
+      <a class="button alt" id="back-link" href="./search.html">宿を探すへ戻る</a>
+    </div>
+    <div class="panel" style="margin-top:20px">
+      <div class="eyebrow">Mode guide</div>
+      <p id="mode-guide" class="muted">表示モードに応じて内容が変化します。</p>
+    </div>
   </div>
 </main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-card">
-      <div>©ぺいぽぴー</div>
-      <div>※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</div>
-    </div>
-  </div>
-</footer>
-
-<div id="noise-overlay" class="noise-overlay" aria-hidden="true">
-  <div class="noise-layer noise-layer-1"></div>
-  <div class="noise-layer noise-layer-2"></div>
-  <div class="noise-layer noise-layer-3"></div>
-  <div class="noise-flash noise-flash-overlay"></div>
-  <div id="noise-message" class="noise-message">サイトが改変されました。</div>
-</div>
-
-<div class="noise-flash"></div>
-<div class="fade-layer"></div>
-
-<script src="./assets/js/config.js"></script>
-<script src="./assets/js/main.js"></script>
-<script src="./assets/js/result.js"></script>
-</body>
-</html>
+<footer class="site-footer"><div class="container"><div class="footer-card"><div>©ぺいぽぴー</div><div>※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</div></div></div></footer>
+<div id="noise-overlay" class="noise-overlay" aria-hidden="true"><div class="noise-layer noise-layer-1"></div><div class="noise-layer noise-layer-2"></div><div class="noise-layer noise-layer-3"></div><div class="noise-flash noise-flash-overlay"></div><div id="noise-message" class="noise-message">サイトが改変されました。</div></div>
+<div class="noise-flash"></div><div class="fade-layer"></div>
+<script src="./assets/js/config.js"></script><script src="./assets/js/main.js"></script><script src="./assets/js/result.js"></script>
+</body></html>

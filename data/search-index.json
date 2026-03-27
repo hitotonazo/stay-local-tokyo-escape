@@ -4,7 +4,7 @@
       "title": "東雲レジデンス浅草",
       "area": "東京 / 東部エリア",
       "summary": "診断結果で案内される人気宿。静かな都心ステイに。",
-      "url": "./detail.html?id=stay_01&mode=favorite",
+      "url": "./result.html?stay=stay_01&from=search&mode=favorite",
       "thumb": "./assets/images/stay_01_01_1200x800.png",
       "keywords": [
         "浅草",
@@ -17,7 +17,7 @@
       "title": "神楽坂ステイラウンジ",
       "area": "東京 / 中央エリア",
       "summary": "街歩き派に人気のコンパクト宿。",
-      "url": "./detail.html?id=stay_01&mode=favorite",
+      "url": "./result.html?stay=stay_01&from=search&mode=favorite",
       "thumb": "./assets/images/stay_01_01_1200x800.png",
       "keywords": [
         "神楽坂",
@@ -28,7 +28,7 @@
       "title": "月島アーバンハウス",
       "area": "東京 / 湾岸エリア",
       "summary": "湾岸夜景と下町散策に向いた宿。",
-      "url": "./detail.html?id=stay_01&mode=favorite",
+      "url": "./result.html?stay=stay_01&from=search&mode=favorite",
       "thumb": "./assets/images/stay_01_01_1200x800.png",
       "keywords": [
         "月島",
@@ -40,7 +40,7 @@
       "title": "浜町リバーサイドルーム",
       "area": "東京 / 東部エリア",
       "summary": "川沿いの落ち着いた空気が魅力の静かな都心宿。",
-      "url": "./detail.html?id=stay_01&mode=favorite",
+      "url": "./result.html?stay=stay_01&from=search&mode=favorite",
       "thumb": "./assets/images/stay_01_01_1200x800.png",
       "keywords": [
         "浜町",
@@ -52,7 +52,7 @@
       "title": "上野コンパクトステイ",
       "area": "東京 / 北東エリア",
       "summary": "移動しやすく短期滞在にも向いた宿。",
-      "url": "./detail.html?id=stay_01&mode=favorite",
+      "url": "./result.html?stay=stay_01&from=search&mode=favorite",
       "thumb": "./assets/images/stay_01_01_1200x800.png",
       "keywords": [
         "上野",
@@ -64,7 +64,7 @@
       "title": "芝公園アネックス",
       "area": "東京 / 南部エリア",
       "summary": "公園近くで落ち着いて過ごせる上質な宿。",
-      "url": "./detail.html?id=stay_01&mode=favorite",
+      "url": "./result.html?stay=stay_01&from=search&mode=favorite",
       "thumb": "./assets/images/stay_01_01_1200x800.png",
       "keywords": [
         "芝公園",

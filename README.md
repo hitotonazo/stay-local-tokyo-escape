@@ -140,3 +140,12 @@
 - 検索結果クリック時は `detail.html?id=stay_01&mode=favorite` へ遷移
 - 違和感①の後は手画像を引き継がず、違和感②のみ表示
 - 違和感②から trap に進んだ後は違和感③のみ表示
+
+
+## ページ統合修正
+- 診断結果・宿詳細・検索結果詳細を `result.html` に統合
+- `result.html` は stay_01〜stay_06 の共通表示ページとして動作
+- 注意事項・レビュー・ギャラリーを診断結果レイアウト内に統合
+- 診断結果由来 (`from=diagnosis`) のときだけ「あなたにおすすめの宿はこちら」を表示
+- `detail.html` は旧リンク対応のため `result.html` へリダイレクト
+- 検索結果からの詳細表示も `result.html?stay=stay_01&from=search&mode=favorite` に統一

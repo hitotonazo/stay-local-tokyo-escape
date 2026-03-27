@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams();
     params.set('stay', data.fixedResult);
     params.set('from', 'diagnosis');
+    params.set('mode', 'favorite');
     location.href = `./result.html?${params.toString()}`;
   });
 });
