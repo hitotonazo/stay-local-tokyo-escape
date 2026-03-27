@@ -168,3 +168,17 @@
 - trap表示ではレビューを犯罪利用の内容に変更
 - trap表示では宿説明を「どういう犯罪におすすめか」に変更
 - トップページも違和感進行後は不穏な文言に変化
+
+
+## mode統一修正
+- トップページの通常状態を `mode=favorite` に統一
+- mode なしのトップアクセスは `index.html?mode=favorite` へ自動リダイレクト
+- トップ・検索・統合詳細ページの主要リンクを `mode=favorite` 付きに統一
+- `window.getMode()` を追加
+- `sessionStorage` は進行状態、`mode` は表示状態として分離
+
+
+## mode URL表示修正
+- トップページは `/index.html?mode=favorite` ではなく `/?mode=favorite` を表示するよう修正
+- mode未指定でトップに来た場合、`location.pathname + '?mode=favorite'` へリダイレクト
+- ナビゲーションのホームリンクも `./?mode=favorite` に統一

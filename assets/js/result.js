@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       showSiteAlteredThen(async () => {
         argSession.set({ anomaly1Done: true });
         await flashTransition(180);
-        location.href = './index.html';
+        location.href = './?mode=favorite';
       });
       return;
     }
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       showSiteAlteredThen(async () => {
         argSession.set({ anomaly2Done: true });
         await flashTransition(180);
-        location.href = './index.html';
+        location.href = './?mode=favorite';
       });
     });
   }
@@ -194,5 +194,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  backLink.href = from === 'search' ? './search.html' : './index.html';
+  backLink.href = from === 'search' ? './search.html?mode=favorite' : './?mode=favorite';
 });

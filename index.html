@@ -7,18 +7,29 @@
   <meta name="description" content="都会向け民泊宿を紹介する、診断付きの民泊案内サイト。">
   <link rel="icon" href="./assets/images/favicon_32x32.png" data-r2-href="assets/images/favicon_32x32.png" sizes="32x32">
   <link rel="stylesheet" href="./assets/css/style.css">
+<script>
+(function () {
+  const params = new URLSearchParams(location.search);
+  if (!params.get('mode')) {
+    params.set('mode', 'favorite');
+    const next = location.pathname + '?' + params.toString() + location.hash;
+    location.replace(next);
+  }
+})();
+</script>
+
 </head>
 <body>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="./index.html">
+    <a class="brand" href="./?mode=favorite">
       <img src="./assets/images/logo_240x80.png" data-r2-src="assets/images/logo_240x80.png" alt="STAY LOCAL">
       <div class="brand-copy" data-archive-title>STAY LOCAL TOKYO ESCAPE</div>
     </a>
     <nav class="nav">
-      <a href="./index.html">ホーム</a>
-      <a href="./search.html">宿を探す</a>
+      <a href="./?mode=favorite">ホーム</a>
+      <a href="./search.html?mode=favorite">宿を探す</a>
       <a href="./result.html?stay=stay_01">診断結果例</a>
       <a href="javascript:void(0)" data-reset-arg>探索をリセット</a>
     </nav>
@@ -45,7 +56,7 @@
         </div>
         <div class="search-bar" style="margin-top:18px">
           <input type="text" value="東部エリア / 浅草近辺" aria-label="おすすめ条件" readonly>
-          <a class="button alt" href="./search.html">条件検索</a>
+          <a class="button alt" href="./search.html?mode=favorite">条件検索</a>
         </div>
         <p class="notice">診断結果は掲載状況や時期により同一の宿をご案内することがあります。</p>
       </aside>
@@ -66,7 +77,7 @@
       <div class="panel">
         <div class="choice-row">
           <button id="start-diagnosis" class="button">診断をはじめる</button>
-          <a class="button alt" href="./search.html">先に一覧を見る</a>
+          <a class="button alt" href="./search.html?mode=favorite">先に一覧を見る</a>
         </div>
         <p id="diagnosis-teaser" class="notice hidden" style="margin-top:12px;">結果を読み込み中です…</p>
       </div>
