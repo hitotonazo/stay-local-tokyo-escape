@@ -131,7 +131,7 @@ fetch(dataUrl('data/stays.json')).then(r=>r.json()).then(stays=>{
         <p class="muted small">${stay.summary}</p>
         <div class="meta"><span>${stay.capacity}</span><span>${stay.score}</span></div>
         <div class="price">${stay.priceText}</div>
-        <a class="inline-link" href="./detail.html?id=${stay.id}&mode=favorite">詳細を見る</a>
+        <a class="inline-link" href="${window.withModeUrl(`./detail.html?id=${stay.id}`, window.getMode ? window.getMode() : 'favorite')}">詳細を見る</a>
       </div>
     </article>
   `).join('');
@@ -161,5 +161,32 @@ fetch(dataUrl('data/stays.json')).then(r=>r.json()).then(stays=>{
 </script>
 
 <script>if(window.applyCurrentModeToLinks){window.applyCurrentModeToLinks(document);}</script>
+
+<script>
+(function(){
+  function patchFeaturedCardsMode(){
+    if (!window.withModeUrl || !window.getMode) return;
+    const mode = window.getMode();
+    const container = document.getElementById('featured-stays');
+    if (!container) return;
+    container.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href') || '';
+      if (href.includes('./detail.html?id=') || href.includes('./result.html?stay=')) {
+        a.setAttribute('href', window.withModeUrl(href, mode));
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(patchFeaturedCardsMode, 0);
+      setTimeout(patchFeaturedCardsMode, 200);
+    });
+  } else {
+    setTimeout(patchFeaturedCardsMode, 0);
+    setTimeout(patchFeaturedCardsMode, 200);
+  }
+})();
+</script>
+
 </body>
 </html>
