@@ -18,6 +18,17 @@
 })();
 </script>
 
+
+<script>
+(function(){
+  const mode=new URLSearchParams(location.search).get('mode');
+  if(mode==='trap'){
+    document.documentElement.classList.add('page-negative');
+    document.body.classList.add('page-negative');
+  }
+})();
+</script>
+
 </head>
 <body>
 

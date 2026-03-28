@@ -90,7 +90,7 @@
     btn.addEventListener('click', () => {
       window.ARGState.reset();
       alert('探索状態をリセットしました。');
-      location.href = './?mode=favorite';
+      sessionStorage.clear(); location.href = './?mode=favorite';
     });
   });
 })();
@@ -127,4 +127,24 @@
   if (!shouldDisturb) return;
   if (heroTitle) heroTitle.innerHTML = '都会に消え込むように、<br>静かな一室へ運び込む。';
   if (heroCopy) heroCopy.textContent = '見つかりにくい宿、気づかれにくい導線、声の漏れにくい部屋。条件に合う場所を、目的別に案内します。';
+})();
+
+// mode固定ナビゲーション
+(function(){
+  function getMode(){
+    const params=new URLSearchParams(location.search);
+    return params.get('mode')||'favorite';
+  }
+  const mode=getMode();
+
+  document.querySelectorAll('a[href]').forEach(a=>{
+    const href=a.getAttribute('href');
+    if(!href || href.startsWith('javascript') || href.includes('mode=')) return;
+
+    if(href.startsWith('./') || href.startsWith('/')){
+      const url=new URL(href, location.origin);
+      url.searchParams.set('mode', mode);
+      a.setAttribute('href', url.pathname + '?' + url.searchParams.toString());
+    }
+  });
 })();

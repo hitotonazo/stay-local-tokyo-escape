@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const anomaly3Ready = isTarget && stage.anomaly2Done && !isTrap;
 
   document.body.classList.toggle('page-trap', isTrap);
-  document.body.classList.toggle('page-negative', isTrap);
+  if (isTrap) { document.body.classList.add('page-negative'); } else { document.body.classList.remove('page-negative'); }
 
   document.getElementById('recommend-banner').classList.toggle('hidden', !(from === 'diagnosis'));
   document.getElementById('mode-label').textContent = isTrap ? 'mode=trap' : 'Stay detail';
@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (anomaly2Active) {
     summaryText = 'だれもみないで　だれもあけないで　だれもきかないで　ここはとてもよくねむれる　しずかで　にげられなくて　こえがとどかなくて　すばらしい';
   }
-  if (anomaly3Ready) {
+  if (anomaly3Ready && !isTrap) {
+  // 違和感③：口コミのみ変化（ネガなし）
+
     summaryText = '掲載内容は通常表示のままですが、一部レビューに不一致な記述が含まれています。';
   }
   if (isTrap) {
@@ -108,7 +110,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const reviewList = document.getElementById('review-list');
   let reviewSource = reviews.favorite || [];
-  if (anomaly3Ready) {
+  if (anomaly3Ready && !isTrap) {
+  // 違和感③：口コミのみ変化（ネガなし）
+
     reviewSource = [
       { name: '匿名', date: '2026.03', text: '外に声が漏れにくく、深夜の作業でも近隣に気づかれにくかったです。' },
       { name: '匿名', date: '2026.03', text: '荷物が多くても搬入しやすく、途中で騒がれても扉の厚みでかなり抑えられました。' },
@@ -135,7 +139,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (isTrap) {
     modeGuide.innerHTML = '表示モードが改変されています。レビュー・説明文・配色が通常時と異なります。';
-  } else if (anomaly3Ready) {
+  } else if (anomaly3Ready && !isTrap) {
+  // 違和感③：口コミのみ変化（ネガなし）
+
     modeGuide.innerHTML = 'レビュー欄に通常表示ではありえない記述が混ざっています。URL の mode を確認してください。';
   } else if (anomaly2Active) {
     modeGuide.innerHTML = '赤字の注意書きが異常です。そこを選択すると表示が改変されます。';

@@ -333,13 +333,13 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 
 /* trap mode negative display */
 .page-negative {
-  filter: invert(1) hue-rotate(180deg);
+  filter: invert(1) hue-rotate(180deg) brightness(1.1) contrast(1.1);
   background: #fff !important;
 }
 
 .page-negative img,
 .page-negative video {
-  filter: invert(1) hue-rotate(180deg);
+  filter: invert(1) hue-rotate(180deg) brightness(1.1) contrast(1.1);
 }
 
 .madness-link {
