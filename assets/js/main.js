@@ -4,6 +4,27 @@
     return params.get('mode') || 'favorite';
   };
 
+
+  window.withModeUrl = function(href, modeOverride){
+    const hrefValue = String(href || '').trim();
+    if (!hrefValue || hrefValue.startsWith('javascript:') || hrefValue.startsWith('#')) return hrefValue;
+    const mode = modeOverride || window.getMode();
+    const url = new URL(hrefValue, location.origin);
+    url.searchParams.set('mode', mode);
+    return url.pathname + '?' + url.searchParams.toString() + (url.hash || '');
+  };
+
+  window.applyCurrentModeToLinks = function(rootEl){
+    const scope = rootEl || document;
+    const mode = window.getMode();
+    scope.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('javascript:') || href.startsWith('#')) return;
+      if (!href.startsWith('./') && !href.startsWith('/')) return;
+      a.setAttribute('href', window.withModeUrl(href, mode));
+    });
+  };
+
   const yearEls = document.querySelectorAll('[data-year]');
   yearEls.forEach(el => el.textContent = new Date().getFullYear());
 
@@ -129,22 +150,14 @@
   if (heroCopy) heroCopy.textContent = '見つかりにくい宿、気づかれにくい導線、声の漏れにくい部屋。条件に合う場所を、目的別に案内します。';
 })();
 
-// mode固定ナビゲーション
+
+
 (function(){
-  function getMode(){
-    const params=new URLSearchParams(location.search);
-    return params.get('mode')||'favorite';
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.applyCurrentModeToLinks) window.applyCurrentModeToLinks(document);
+    });
+  } else {
+    if (window.applyCurrentModeToLinks) window.applyCurrentModeToLinks(document);
   }
-  const mode=getMode();
-
-  document.querySelectorAll('a[href]').forEach(a=>{
-    const href=a.getAttribute('href');
-    if(!href || href.startsWith('javascript') || href.includes('mode=')) return;
-
-    if(href.startsWith('./') || href.startsWith('/')){
-      const url=new URL(href, location.origin);
-      url.searchParams.set('mode', mode);
-      a.setAttribute('href', url.pathname + '?' + url.searchParams.toString());
-    }
-  });
 })();

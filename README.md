@@ -189,3 +189,10 @@
 - `mode=favorite` では常に通常のトップ文言を表示
 - `mode=trap` のトップページから遷移した各ページも `mode=trap` を保持
 - 検索・詳細・統合ページ内のローカルリンクにも現在の `mode` を自動付与
+
+
+## trap持ち回り再修正
+- `withModeUrl()` と `applyCurrentModeToLinks()` を追加
+- 画面描画後に全ローカルリンクへ現在の `mode` を強制付与
+- 診断遷移も `window.getMode()` を参照して現在の `mode` を保持
+- `mode=trap` のトップから開く検索・診断結果例・詳細系ページも `mode=trap` を維持

@@ -191,15 +191,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!isTrap) {
       runSiteAlteredOverlay(async () => {
         await flashTransition(180);
-        location.href = `./result.html?${next.toString()}`;
+        location.href = './result.html?' + next.toString();
       });
       return;
     }
 
     flashTransition(120).then(() => {
-      location.href = `./result.html?${next.toString()}`;
+      location.href = './result.html?' + next.toString();
     });
   });
 
-  backLink.href = from === 'search' ? `./search.html?mode=${currentMode}` : `./?mode=${currentMode}`;
+  backLink.href = from === 'search' ? window.withModeUrl('./search.html', currentMode) : window.withModeUrl('./', currentMode);
 });

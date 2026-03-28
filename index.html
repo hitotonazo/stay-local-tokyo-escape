@@ -34,13 +34,13 @@
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="./?mode=favorite">
+    <a class="brand" href="./">
       <img src="./assets/images/logo_240x80.png" data-r2-src="assets/images/logo_240x80.png" alt="STAY LOCAL">
       <div class="brand-copy" data-archive-title>STAY LOCAL TOKYO ESCAPE</div>
     </a>
     <nav class="nav">
-      <a href="./?mode=favorite">ホーム</a>
-      <a href="./search.html?mode=favorite">宿を探す</a>
+      <a href="./">ホーム</a>
+      <a href="./search.html">宿を探す</a>
       <a href="./result.html?stay=stay_01">診断結果例</a>
       <a href="javascript:void(0)" data-reset-arg>探索をリセット</a>
     </nav>
@@ -67,7 +67,7 @@
         </div>
         <div class="search-bar" style="margin-top:18px">
           <input type="text" value="東部エリア / 浅草近辺" aria-label="おすすめ条件" readonly>
-          <a class="button alt" href="./search.html?mode=favorite">条件検索</a>
+          <a class="button alt" href="./search.html">条件検索</a>
         </div>
         <p class="notice">診断結果は掲載状況や時期により同一の宿をご案内することがあります。</p>
       </aside>
@@ -88,7 +88,7 @@
       <div class="panel">
         <div class="choice-row">
           <button id="start-diagnosis" class="button">診断をはじめる</button>
-          <a class="button alt" href="./search.html?mode=favorite">先に一覧を見る</a>
+          <a class="button alt" href="./search.html">先に一覧を見る</a>
         </div>
         <p id="diagnosis-teaser" class="notice hidden" style="margin-top:12px;">結果を読み込み中です…</p>
       </div>
@@ -160,5 +160,6 @@ fetch(dataUrl('data/stays.json')).then(r=>r.json()).then(stays=>{
 })();
 </script>
 
+<script>if(window.applyCurrentModeToLinks){window.applyCurrentModeToLinks(document);}</script>
 </body>
 </html>
