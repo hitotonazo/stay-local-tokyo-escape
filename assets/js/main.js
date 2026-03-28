@@ -161,3 +161,41 @@
     if (window.applyCurrentModeToLinks) window.applyCurrentModeToLinks(document);
   }
 })();
+
+
+// mode=trap 直アクセス時の改変演出
+(function(){
+  function shouldTriggerTrapOverlayOnLoad(){
+    const mode = (typeof window.getMode === 'function') ? window.getMode() : 'favorite';
+    if (mode !== 'trap') return false;
+
+    const key = 'trapOverlayShown:' + location.pathname + location.search;
+    try {
+      if (sessionStorage.getItem(key) === '1') return false;
+      sessionStorage.setItem(key, '1');
+      return true;
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function triggerTrapOverlayOnLoad(){
+    if (!shouldTriggerTrapOverlayOnLoad()) return;
+
+    const run = function(){
+      if (typeof window.runSiteAlteredOverlay === 'function') {
+        window.runSiteAlteredOverlay(function(){});
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){
+        setTimeout(run, 80);
+      }, { once: true });
+    } else {
+      setTimeout(run, 80);
+    }
+  }
+
+  triggerTrapOverlayOnLoad();
+})();
