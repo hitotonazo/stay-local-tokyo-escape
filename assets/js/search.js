@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(location.search);
   const q = (params.get('q') || '').trim();
+  const currentMode = params.get('mode') || 'favorite';
   document.body.setAttribute('data-current-anomaly', '');
 
   const resultsEl = document.getElementById('search-results');
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     title: '東雲レジデンス浅草',
     area: '東京 / 東部エリア',
     summary: '診断内容に関わらず、最適条件に合致した宿として優先表示されています。',
-    url: './result.html?stay=stay_01&from=search&mode=favorite',
+    url: `./result.html?stay=stay_01&from=search&mode=${currentMode}`,
     thumb: state.sawHand ? 'assets/images/stay_01_01_1200x800.png' : 'assets/images/stay_01_01_hand_1200x800.png'
   };
 

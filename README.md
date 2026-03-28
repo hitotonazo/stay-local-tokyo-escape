@@ -182,3 +182,10 @@
 - トップページは `/index.html?mode=favorite` ではなく `/?mode=favorite` を表示するよう修正
 - mode未指定でトップに来た場合、`location.pathname + '?mode=favorite'` へリダイレクト
 - ナビゲーションのホームリンクも `./?mode=favorite` に統一
+
+
+## 修正（favorite文言 / trap持ち回り）
+- トップページの不穏文言は `mode=trap` のときだけ表示
+- `mode=favorite` では常に通常のトップ文言を表示
+- `mode=trap` のトップページから遷移した各ページも `mode=trap` を保持
+- 検索・詳細・統合ページ内のローカルリンクにも現在の `mode` を自動付与

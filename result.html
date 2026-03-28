@@ -74,4 +74,27 @@
 <div id="noise-overlay" class="noise-overlay" aria-hidden="true"><div class="noise-layer noise-layer-1"></div><div class="noise-layer noise-layer-2"></div><div class="noise-layer noise-layer-3"></div><div class="noise-flash noise-flash-overlay"></div><div id="noise-message" class="noise-message">サイトが改変されました。</div></div>
 <div class="noise-flash"></div><div class="fade-layer"></div>
 <script src="./assets/js/config.js"></script><script src="./assets/js/main.js"></script><script src="./assets/js/result.js"></script>
+
+<script>
+(function(){
+  function applyModeToLinks() {
+    const params = new URLSearchParams(location.search);
+    const mode = params.get('mode') || 'favorite';
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('javascript:') || href.startsWith('#')) return;
+      if (!href.startsWith('./') && !href.startsWith('/')) return;
+      const url = new URL(href, location.origin);
+      url.searchParams.set('mode', mode);
+      a.setAttribute('href', url.pathname + '?' + url.searchParams.toString());
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyModeToLinks);
+  } else {
+    applyModeToLinks();
+  }
+})();
+</script>
+
 </body></html>

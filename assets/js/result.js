@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const id = params.get('stay') || params.get('id') || 'stay_01';
   const from = params.get('from') || 'detail';
   const mode = params.get('mode') || 'favorite';
+  const currentMode = mode;
 
   const stays = await fetch(dataUrl('data/stays.json')).then(r => r.json());
   const reviews = await fetch(dataUrl('data/reviews.json')).then(r => r.json()).catch(() => ({ favorite: [], trap: [] }));
@@ -200,5 +201,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  backLink.href = from === 'search' ? './search.html?mode=favorite' : './?mode=favorite';
+  backLink.href = from === 'search' ? `./search.html?mode=${currentMode}` : `./?mode=${currentMode}`;
 });

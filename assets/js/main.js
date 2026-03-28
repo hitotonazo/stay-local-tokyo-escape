@@ -123,7 +123,7 @@
   const heroTitle = document.getElementById('hero-title-main');
   const heroCopy = document.getElementById('hero-copy-main');
   if (!heroTitle && !heroCopy) return;
-  const shouldDisturb = mode === 'trap' || !!stage.anomaly2Done;
+  const shouldDisturb = mode === 'trap';
   if (!shouldDisturb) return;
   if (heroTitle) heroTitle.innerHTML = '都会に消え込むように、<br>静かな一室へ運び込む。';
   if (heroCopy) heroCopy.textContent = '見つかりにくい宿、気づかれにくい導線、声の漏れにくい部屋。条件に合う場所を、目的別に案内します。';
