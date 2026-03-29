@@ -228,3 +228,9 @@
 - 違和感③では stay_01〜stay_06 のすべてでレビュー3件を
   「trapモードが役に立ちました」
   に統一
+
+
+## Xリポスト導線追加
+- trapモード到達後のトップページ上部に、Xでリポストするボタンを追加
+- 初期リンク先は `https://x.com/arg_observerx?s=21&t=n9hS9eUFPNMQIQ1S4aDaOw`
+- 後からこのURLを実際の投稿URLに差し替え可能

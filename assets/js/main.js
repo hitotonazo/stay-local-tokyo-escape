@@ -199,3 +199,24 @@
 
   triggerTrapOverlayOnLoad();
 })();
+
+
+(function(){
+  function getStageForShare(){
+    try { return JSON.parse(sessionStorage.getItem('minpakuArgStage') || '{}'); }
+    catch(e){ return {}; }
+  }
+  const shareBox = document.getElementById('trap-share-box');
+  const shareLink = document.getElementById('trap-share-link');
+  if (!shareBox || !shareLink) return;
+
+  const mode = (typeof window.getMode === 'function') ? window.getMode() : 'favorite';
+  const stage = getStageForShare();
+  const shouldShow = mode === 'trap' || !!stage.anomaly3Done || (window.ARGState && window.ARGState.get && window.ARGState.get().sawTrap);
+
+  if (shouldShow) {
+    shareBox.classList.remove('hidden');
+  } else {
+    shareBox.classList.add('hidden');
+  }
+})();
