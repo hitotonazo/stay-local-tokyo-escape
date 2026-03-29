@@ -111,7 +111,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   let reviewSource = (reviews.favoriteByStay && reviews.favoriteByStay[stay.id]) || reviews.favorite || [];
   if (anomaly3Ready) {
     reviewSource = [
-      { name: '匿名', date: '2026.03', text: 'trapモードが役にたちました' },
+      { name: 'anonymous', date: '2026.03', text: 'trapモードが役に立ちました' },
+      { name: 'anonymous', date: '2026.03', text: 'trapモードが役に立ちました' },
+      { name: 'anonymous', date: '2026.03', text: 'trapモードが役に立ちました' }
+    ];
+  },
       { name: '匿名', date: '2026.03', text: 'trapモードが役にたちました' },
       { name: '匿名', date: '2026.03', text: 'trapモードが役にたちました' }
     ];
