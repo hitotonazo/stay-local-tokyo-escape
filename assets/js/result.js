@@ -75,18 +75,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   const cautionBox = document.getElementById('caution-box');
   let cautionHtml = '';
   if (anomaly2Active) {
+    const items = stay.cautions || [];
     cautionHtml = `
       <div class="eyebrow">Caution</div>
       <h2>利用上の注意</h2>
-      <ul class="list">
-        <li>チェックインは16:00以降、チェックアウトは10:00までです。</li>
-        <li>館内は全室禁煙です。</li>
-        <li>騒音防止のため、22:00以降は共用部での会話をお控えください。</li>
-      </ul>
-      <ul class="list alert-list">
-        <li><a href="javascript:void(0)" id="madness-link" class="madness-link">だれも出すな　だれも返すな　やわらかいうちに閉めろ　泣いても開けるな　朝まで数を合わせろ　見つめていろ　見つめていろ　見つめていろ</a></li>
-      </ul>
-      <p class="small muted">※ 赤字部分は掲載更新に伴って変動する場合があります。</p>
+      <ul class="list">${items.filter(x => !x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
+      <ul class="list alert-list">${items.filter(x => x.isAlert).map(x => `<li>${x.text}</li>`).join('')}</ul>
+      <p class="small muted">※ 赤字の注意事項は、掲載内容の更新状況によって表現が異なる場合があります。</p>
     `;
   } else if (isTrap) {
     const trapItems = stay.cautionsTrap || [];
@@ -152,6 +147,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     modeGuide.innerHTML = '宿詳細ページです。表示モードを切り替えると別の表示になります。';
   }
 
+  const resultCopyEl = document.getElementById('result-copy');
+  if (anomaly2Active && resultCopyEl) {
+    resultCopyEl.classList.add('anomaly-2-copy');
+    resultCopyEl.setAttribute('data-glitch', resultCopyEl.textContent);
+    resultCopyEl.setAttribute('role', 'button');
+    resultCopyEl.setAttribute('tabindex', '0');
+
+    const triggerAnomaly2 = async (e) => {
+      if (e) e.preventDefault();
+      showSiteAlteredThen(async () => {
+        argSession.set({ anomaly2Done: true });
+        await flashTransition(180);
+        location.href = './index.html';
+      });
+    };
+
+    resultCopyEl.addEventListener('click', triggerAnomaly2);
+    resultCopyEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') triggerAnomaly2(e);
+    });
+  }
+
   const imageLink = document.getElementById('result-image-link');
   const trapToggle = document.getElementById('trap-toggle');
   const backLink = document.getElementById('back-link');
@@ -168,18 +185,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
   });
-
-  const madnessLink = document.getElementById('madness-link');
-  if (madnessLink) {
-    madnessLink.addEventListener('click', async (e) => {
-      e.preventDefault();
-      showSiteAlteredThen(async () => {
-        argSession.set({ anomaly2Done: true });
-        await flashTransition(180);
-        location.href = './?mode=favorite';
-      });
-    });
-  }
 
   trapToggle.addEventListener('click', (e) => {
     e.preventDefault();
