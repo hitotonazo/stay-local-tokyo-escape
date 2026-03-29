@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const reviewList = document.getElementById('review-list');
   let reviewSource = (reviews.favoriteByStay && reviews.favoriteByStay[stay.id]) || reviews.favorite || [];
+
   if (anomaly3Ready) {
     reviewSource = [
       { name: 'anonymous', date: '2026.03', text: 'trapモードが役に立ちました' },
@@ -117,20 +118,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     ];
   }
 
-
-
   if (isTrap) {
-    
-  } else if (anomaly3Ready && !isTrap) {
-  // 違和感③：口コミのみ変化（ネガなし）
+    reviewSource = stay.trapCrimeReviews || [
+      { name: '匿名', date: '2026.03', text: '拘束後の見張りに使いました。窓が少なく、視線が切れるので扱いやすかったです。' },
+      { name: '匿名', date: '2026.03', text: '搬入から保管まで一か所で済みました。床の汚れも目立ちにくく、処理が早かったです。' },
+      { name: '匿名', date: '2026.03', text: '叫ばれても外に通りにくく、時間をかけても問題ありませんでした。次もここを使います。' }
+    ];
+  }
 
-    
-  } else if (anomaly2Active) {
-    
-  } else if (anomaly1Active) {
-    
-  } else {
-    
+  if (reviewList) {
+    reviewList.innerHTML = reviewSource.map(item => `
+      <article class="review-card">
+        <div class="review-head"><strong>${item.name}</strong><span>${item.date}</span></div>
+        <p>${item.text}</p>
+      </article>
+    `).join('');
   }
 
   const resultCopyEl = document.getElementById('result-copy');
@@ -192,5 +194,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  backLink.href = from === 'search' ? window.withModeUrl('./search.html', currentMode) : window.withModeUrl('./', currentMode);
+  if (backLink) backLink.href = from === 'search' ? window.withModeUrl('./search.html', currentMode) : window.withModeUrl('./', currentMode);
 });
