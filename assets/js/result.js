@@ -38,9 +38,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.toggle('page-trap', isTrap);
   if (isTrap) { document.body.classList.add('page-negative'); } else { document.body.classList.remove('page-negative'); }
 
-  document.getElementById('recommend-banner').classList.toggle('hidden', !(from === 'diagnosis'));
-  document.getElementById('mode-label').textContent = isTrap ? 'mode=trap' : 'Stay detail';
-  document.getElementById('result-title').textContent = stay.name;
+  const recommendBannerEl = document.getElementById('recommend-banner');
+  const modeLabelEl = document.getElementById('mode-label');
+  const resultTitleEl = document.getElementById('result-title');
+  if (recommendBannerEl) recommendBannerEl.classList.toggle('hidden', !(from === 'diagnosis'));
+  if (modeLabelEl) modeLabelEl.textContent = isTrap ? 'mode=trap' : 'Stay detail';
+  if (resultTitleEl) resultTitleEl.textContent = stay.name;
 
   let summaryText = stay.summary || '';
   if (anomaly2Active) {
@@ -131,20 +134,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const archiveLink = document.getElementById('archive-link');
   const modeGuide = document.getElementById('mode-guide');
-  archiveLink.classList.add('hidden');
+  if (archiveLink) archiveLink.classList.add('hidden');
 
   if (isTrap) {
-    modeGuide.innerHTML = '表示モードが改変されています。レビュー・説明文・配色が通常時と異なります。';
+    if (modeGuide) modeGuide.innerHTML = '表示モードが改変されています。レビュー・説明文・配色が通常時と異なります。';
   } else if (anomaly3Ready && !isTrap) {
   // 違和感③：口コミのみ変化（ネガなし）
 
-    modeGuide.innerHTML = 'レビュー欄に通常表示ではありえない記述が混ざっています。URL の mode を確認してください。';
+    if (modeGuide) modeGuide.innerHTML = 'レビュー欄に通常表示ではありえない記述が混ざっています。URL の mode を確認してください。';
   } else if (anomaly2Active) {
-    modeGuide.innerHTML = '赤字の注意書きが異常です。そこを選択すると表示が改変されます。';
+    if (modeGuide) modeGuide.innerHTML = '赤字の注意書きが異常です。そこを選択すると表示が改変されます。';
   } else if (anomaly1Active) {
-    modeGuide.innerHTML = '画像内の手が違和感です。選択すると表示が改変されます。';
+    if (modeGuide) modeGuide.innerHTML = '画像内の手が違和感です。選択すると表示が改変されます。';
   } else {
-    modeGuide.innerHTML = '宿詳細ページです。表示モードを切り替えると別の表示になります。';
+    if (modeGuide) modeGuide.innerHTML = '宿詳細ページです。表示モードを切り替えると別の表示になります。';
   }
 
   const resultCopyEl = document.getElementById('result-copy');
@@ -173,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const trapToggle = document.getElementById('trap-toggle');
   const backLink = document.getElementById('back-link');
 
-  imageLink.addEventListener('click', async (e) => {
+  if (imageLink) imageLink.addEventListener('click', async (e) => {
     e.preventDefault();
 
     if (anomaly1Active) {
@@ -186,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  trapToggle.addEventListener('click', (e) => {
+  if (trapToggle) trapToggle.addEventListener('click', (e) => {
     e.preventDefault();
     const next = new URLSearchParams();
     next.set('stay', stay.id);
