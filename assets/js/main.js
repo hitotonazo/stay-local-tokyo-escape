@@ -220,3 +220,15 @@
     shareBox.classList.add('hidden');
   }
 })();
+
+
+(function(){
+  const shareLink = document.getElementById('trap-share-link');
+  if (!shareLink) return;
+
+  const sourceUrl = 'https://x.com/arg_observerx?s=21&t=n9hS9eUFPNMQIQ1S4aDaOw';
+  const pageUrl = window.location.href;
+  const text = `このホームページを見てほしい\n${sourceUrl}\n${pageUrl}`;
+  const intent = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
+  shareLink.setAttribute('href', intent);
+})();
