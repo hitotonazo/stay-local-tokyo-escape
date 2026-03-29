@@ -108,14 +108,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   cautionBox.innerHTML = cautionHtml;
 
   const reviewList = document.getElementById('review-list');
-  let reviewSource = reviews.favorite || [];
-  if (anomaly3Ready && !isTrap) {
-  // 違和感③：口コミのみ変化（ネガなし）
-
+  let reviewSource = (reviews.favoriteByStay && reviews.favoriteByStay[stay.id]) || reviews.favorite || [];
+  if (anomaly3Ready) {
     reviewSource = [
-      { name: '匿名', date: '2026.03', text: '外に声が漏れにくく、深夜の作業でも近隣に気づかれにくかったです。' },
-      { name: '匿名', date: '2026.03', text: '荷物が多くても搬入しやすく、途中で騒がれても扉の厚みでかなり抑えられました。' },
-      { name: '匿名', date: '2026.03', text: '監視しやすい位置関係で、朝まで様子を見るのに向いていました。' }
+      { name: '匿名', date: '2026.03', text: 'trapモードが役にたちました' },
+      { name: '匿名', date: '2026.03', text: 'trapモードが役にたちました' },
+      { name: '匿名', date: '2026.03', text: 'trapモードが役にたちました' }
     ];
   }
   if (isTrap) {
