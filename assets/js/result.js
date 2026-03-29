@@ -131,21 +131,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   `).join('');
 
   const archiveLink = document.getElementById('archive-link');
-  const modeGuide = document.getElementById('mode-guide');
+  
   if (archiveLink) archiveLink.classList.add('hidden');
 
   if (isTrap) {
-    if (modeGuide) modeGuide.innerHTML = '表示モードが改変されています。レビュー・説明文・配色が通常時と異なります。';
+    
   } else if (anomaly3Ready && !isTrap) {
   // 違和感③：口コミのみ変化（ネガなし）
 
-    if (modeGuide) modeGuide.innerHTML = 'レビュー欄に通常表示ではありえない記述が混ざっています。URL の mode を確認してください。';
+    
   } else if (anomaly2Active) {
-    if (modeGuide) modeGuide.innerHTML = '赤字の注意書きが異常です。そこを選択すると表示が改変されます。';
+    
   } else if (anomaly1Active) {
-    if (modeGuide) modeGuide.innerHTML = '画像内の手が違和感です。選択すると表示が改変されます。';
+    
   } else {
-    if (modeGuide) modeGuide.innerHTML = '宿詳細ページです。表示モードを切り替えると別の表示になります。';
+    
   }
 
   const resultCopyEl = document.getElementById('result-copy');
