@@ -226,9 +226,14 @@
   const shareLink = document.getElementById('trap-share-link');
   if (!shareLink) return;
 
-  const sourceUrl = 'https://x.com/arg_observerx?s=21&t=n9hS9eUFPNMQIQ1S4aDaOw';
-  const pageUrl = window.location.href;
-  const text = `このホームページを見てほしい\n${sourceUrl}\n${pageUrl}`;
+  const sourceUrl = 'https://x.com/arg_observerx';
+
+  const text = `この民泊サイトの真相、気づいた人いますか
+普通のサイトじゃないです
+
+#おかしなサイト
+${sourceUrl}`;
+
   const intent = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
   shareLink.setAttribute('href', intent);
 })();

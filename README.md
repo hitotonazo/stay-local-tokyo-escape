@@ -259,3 +259,8 @@
 - trapトップの各宿カード説明を、trap詳細ページの説明文（crimeSummary）に準拠
 - trap時にページ内の「宿」をクレヨン風の塗りつぶし表示へ変更
 - MODE GUIDE の枠を result.html から完全削除
+
+
+## X共有文言修正
+- X共有ボタンの投稿文を指定文言に変更
+- 投稿本文に含めるリンクは `https://x.com/arg_observerx` のみに変更
