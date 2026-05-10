@@ -234,3 +234,13 @@
 })();
 
 
+
+(function(){
+ const mode = window.getMode?window.getMode():'favorite';
+ if(mode!=='trap') return;
+ document.querySelectorAll('*').forEach(el=>{
+  if(el.textContent && el.textContent.trim()==='宿'){
+    el.classList.add('crayon-mask');
+  }
+ });
+})();

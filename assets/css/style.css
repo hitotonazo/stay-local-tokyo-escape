@@ -585,3 +585,12 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
   }
 }
 
+
+.crayon-mask { color: transparent !important; position:relative; }
+.crayon-mask::after{
+ content:'';
+ position:absolute;
+ inset:0;
+ background:#cfcfcf;
+ filter:blur(6px);
+}
