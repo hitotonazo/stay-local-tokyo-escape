@@ -232,3 +232,20 @@
   const intent = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
   shareLink.setAttribute('href', intent);
 })();
+
+
+(function(){
+  const btn = document.getElementById('debug-trigger');
+  if(!btn) return;
+
+  btn.addEventListener('click', ()=>{
+    btn.textContent = "5秒後に発火...";
+    setTimeout(()=>{
+      if(typeof runSiteAlteredOverlay === "function"){
+        runSiteAlteredOverlay(()=>{
+          console.log("DEBUG: overlay fired");
+        });
+      }
+    }, 5000);
+  });
+})();
