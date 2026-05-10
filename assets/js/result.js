@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const stage = argSession.get();
   const anomaly1Active = isTarget && !stage.anomaly1Done && (from === 'diagnosis' || from === 'search');
   const anomaly2Active = isTarget && stage.anomaly1Done && !stage.anomaly2Done && !isTrap;
-  const anomaly3Ready = isTarget && stage.anomaly2Done && !isTrap;
+  const anomaly3Ready = stage.anomaly2Done && !isTrap;
 
   document.body.classList.toggle('page-trap', isTrap);
   if (isTrap) { document.body.classList.add('page-negative'); } else { document.body.classList.remove('page-negative'); }
