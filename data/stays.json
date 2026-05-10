@@ -34,10 +34,6 @@
       {
         "text": "退出には所定の手続きが必要です。",
         "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は記録されることがあります。",
-        "isAlert": true
       }
     ],
     "cautionsTrap": [
@@ -56,10 +52,6 @@
       },
       {
         "text": "退出には管理側の承認が必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は常時記録されます。",
         "isAlert": true
       }
     ],
@@ -117,10 +109,6 @@
       {
         "text": "退出には所定の手続きが必要です。",
         "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は記録されることがあります。",
-        "isAlert": true
       }
     ],
     "cautionsTrap": [
@@ -139,10 +127,6 @@
       },
       {
         "text": "退出には管理側の承認が必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は常時記録されます。",
         "isAlert": true
       }
     ],
@@ -200,10 +184,6 @@
       {
         "text": "退出には所定の手続きが必要です。",
         "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は記録されることがあります。",
-        "isAlert": true
       }
     ],
     "cautionsTrap": [
@@ -222,10 +202,6 @@
       },
       {
         "text": "退出には管理側の承認が必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は常時記録されます。",
         "isAlert": true
       }
     ],
@@ -283,10 +259,6 @@
       {
         "text": "退出には所定の手続きが必要です。",
         "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は記録されることがあります。",
-        "isAlert": true
       }
     ],
     "cautionsTrap": [
@@ -305,10 +277,6 @@
       },
       {
         "text": "退出には管理側の承認が必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は常時記録されます。",
         "isAlert": true
       }
     ],
@@ -366,10 +334,6 @@
       {
         "text": "退出には所定の手続きが必要です。",
         "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は記録されることがあります。",
-        "isAlert": true
       }
     ],
     "cautionsTrap": [
@@ -388,10 +352,6 @@
       },
       {
         "text": "退出には管理側の承認が必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は常時記録されます。",
         "isAlert": true
       }
     ],
@@ -449,10 +409,6 @@
       {
         "text": "退出には所定の手続きが必要です。",
         "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は記録されることがあります。",
-        "isAlert": true
       }
     ],
     "cautionsTrap": [
@@ -471,10 +427,6 @@
       },
       {
         "text": "退出には管理側の承認が必要です。",
-        "isAlert": true
-      },
-      {
-        "text": "滞在中の行動は常時記録されます。",
         "isAlert": true
       }
     ],

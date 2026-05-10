@@ -235,12 +235,44 @@
 
 
 
+
+// trap時: 「宿」の文字をクレヨンで塗りつぶしたように隠す
 (function(){
- const mode = window.getMode?window.getMode():'favorite';
- if(mode!=='trap') return;
- document.querySelectorAll('*').forEach(el=>{
-  if(el.textContent && el.textContent.trim()==='宿'){
-    el.classList.add('crayon-mask');
+  function maskYadoText(){
+    const mode = (window.getMode ? window.getMode() : 'favorite');
+    if (mode !== 'trap') return;
+
+    const skipTags = new Set(['SCRIPT','STYLE','NOSCRIPT','TEXTAREA','INPUT']);
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        if (!node.nodeValue || !node.nodeValue.includes('宿')) return NodeFilter.FILTER_REJECT;
+        const parent = node.parentElement;
+        if (!parent || skipTags.has(parent.tagName) || parent.closest('.crayon-mask')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const targets = [];
+    while (walker.nextNode()) targets.push(walker.currentNode);
+
+    targets.forEach(node => {
+      const frag = document.createDocumentFragment();
+      node.nodeValue.split('宿').forEach((part, index, arr) => {
+        if (part) frag.appendChild(document.createTextNode(part));
+        if (index < arr.length - 1) {
+          const span = document.createElement('span');
+          span.className = 'crayon-mask';
+          span.textContent = '宿';
+          frag.appendChild(span);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
   }
- });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(maskYadoText, 80));
+  } else {
+    setTimeout(maskYadoText, 80);
+  }
 })();

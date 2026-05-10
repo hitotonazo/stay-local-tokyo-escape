@@ -141,7 +141,7 @@ fetch(dataUrl('data/stays.json')).then(r=>r.json()).then(stays=>{
       <div class="card-body">
         <div class="eyebrow">${stay.area}</div>
         <h3>${stay.name}</h3>
-        <p class="muted small">${stay.summary}</p>
+        <p class="muted small">${(window.getMode && window.getMode() === `trap`) ? (stay.crimeSummary || stay.trapSummary || stay.summary) : stay.summary}</p>
         <div class="meta"><span>${stay.capacity}</span><span>${stay.score}</span></div>
         <div class="price">${stay.priceText}</div>
         <a class="inline-link" href="${window.withModeUrl(`./detail.html?id=${stay.id}`, window.getMode ? window.getMode() : 'favorite')}">詳細を見る</a>
