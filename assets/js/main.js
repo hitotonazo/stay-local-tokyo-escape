@@ -226,7 +226,7 @@
   const shareLink = document.getElementById('trap-share-link');
   if (!shareLink) return;
 
-  const sourceUrl = 'https://x.com/arg_observerx';
+  const sourceUrl = 'https://x.com/ARG_ObserverX/status/2053762039500452115';
 
   const text = `この民泊サイトの真相、気づいた人いますか
 普通のサイトじゃないです
