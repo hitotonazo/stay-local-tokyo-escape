@@ -102,6 +102,19 @@
     });
   };
 
+  document.querySelectorAll('[data-demo-alter-logo]').forEach(logo => {
+    let demoAlterTimer = null;
+    logo.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (demoAlterTimer) clearTimeout(demoAlterTimer);
+
+      demoAlterTimer = setTimeout(() => {
+        demoAlterTimer = null;
+        window.runSiteAlteredOverlay(function(){});
+      }, 5000);
+    });
+  });
+
 
   document.querySelectorAll('[data-archive-title]').forEach(el => {
     if(window.ARGState.completed()) el.textContent = 'STAY LOCAL TOKYO ESCAPE / ARCHIVE';
